@@ -1,12 +1,14 @@
 const express = require("express");
 const fileupload = require("express-fileupload");
 const cors = require("cors");
+const PORT = 3002;
 
 const app = express();
 
 app.use(cors());
 app.use(fileupload());
 app.use(express.static("files"));
+
 
 app.post('/upload', (req, res) => {
   const filePath = _dirname + "/files/";
