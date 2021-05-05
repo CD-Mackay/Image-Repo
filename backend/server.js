@@ -11,6 +11,7 @@ app.use(express.static("files"));
 
 
 app.post('/upload', (req, res) => {
+  console.log("uploading something!")
   const filePath = _dirname + "/files/";
   const file = req.files.file;
   const fileName = file.name;
@@ -24,5 +25,5 @@ app.post('/upload', (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log(`server running on port ${PORT}`);
+  console.log(`server running on port 3000`);
 });

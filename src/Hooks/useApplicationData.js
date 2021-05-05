@@ -10,8 +10,8 @@ export default function useApplicationData() {
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
   };
-  
-  const saveFile = async (event) => {
+
+  const uploadFile = async (event) => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("fileName", fileName);
@@ -27,6 +27,9 @@ export default function useApplicationData() {
 
   }
   return {
-
+    file,
+    fileName,
+    saveFile,
+    uploadFile
   }
 }
