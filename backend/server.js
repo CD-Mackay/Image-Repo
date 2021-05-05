@@ -1,6 +1,7 @@
 const express = require("express");
 const fileupload = require("express-fileupload");
 const cors = require("cors");
+const PORT = 3002;
 
 const app = express();
 
@@ -8,7 +9,9 @@ app.use(cors());
 app.use(fileupload());
 app.use(express.static("files"));
 
+
 app.post('/upload', (req, res) => {
+  console.log("uploading something!")
   const filePath = _dirname + "/files/";
   const file = req.files.file;
   const fileName = file.name;
@@ -22,5 +25,5 @@ app.post('/upload', (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log(`server running on port ${PORT}`);
+  console.log(`server running on port 3000`);
 });

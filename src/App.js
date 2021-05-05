@@ -1,23 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import useApplicationData from './Hooks/useApplicationData';
 
 function App() {
+
+  
+  const { file, fileName, saveFile, uploadFile } = useApplicationData();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input type="file" onChange={saveFile} />
+      <button onClick={uploadFile}>Upload</button>
     </div>
   );
 }
