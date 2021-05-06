@@ -45,7 +45,7 @@ app.post('/login', (req, res) => {
   
   pool.query('SELECT * FROM users;')
   .then((data) => {
-    const userID = getUserID(name, data);
+    console.log(data);
   })
   .catch(err => console.log(err));
   });

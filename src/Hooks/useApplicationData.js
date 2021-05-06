@@ -26,10 +26,24 @@ export default function useApplicationData() {
     }
 
   }
+
+  const loginUser = (user) => {
+
+    return axios.post({
+      url: '/login',
+      method: 'POST',
+      data: { user }
+    })
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+  };
+
+
   return {
     file,
     fileName,
     saveFile,
-    uploadFile
+    uploadFile,
+    loginUser
   }
 }
