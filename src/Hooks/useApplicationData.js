@@ -17,7 +17,7 @@ export default function useApplicationData() {
     formData.append("fileName", fileName);
     try {
       const res = await axios.post(
-        "http://localhost:3002/upload",
+        "/upload",
         formData
       );
       console.log(res);
