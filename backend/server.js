@@ -1,13 +1,58 @@
 const express = require("express");
 const fileupload = require("express-fileupload");
 const cors = require("cors"); 
+const cookieSession = require('cookie-session');
+const { getUserID } = require('./helpers');
+const user = 'connormackay';
+const database = 'image_storage';
 
 const app = express();
+const { Pool } = require('pg');
 
 app.use(cors());
 app.use(fileupload());
 app.use(express.static("files"));
+app.use(express.urlencoded());  
+app.use(express.json());
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1']
+}));
 
+
+const pool = new Pool({
+  host: 'localhost',
+  user: user,
+  database: database
+});
+
+
+pool.connect((err, client, release) => {
+  if (err) {
+    return console.error('error acquiring client', err.stack);
+  }
+  client.query('SELECT NOW()', (err, result) => {
+    release()
+    if(err) {
+      return console.error('error executing query', err.stack);
+    }
+    console.log(result.rows);
+  });
+});
+
+
+app.post('/login', (req, res) => { 
+  let name = req.body.user.name;
+  let password = req.body.user.password;
+  pool.query('SELECT * FROM users;')
+  .then((data) => {
+    // console.log(name, data.rows);
+    const userID = getUserID(name, data.rows);
+    req.session.userID = userID;
+    console.log('cookie added?');
+  })
+  .catch(err => console.log(err));
+  });
 
 app.post('/upload', (req, res) => {
   console.log(req.files);
