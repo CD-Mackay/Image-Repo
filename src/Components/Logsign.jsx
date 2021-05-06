@@ -16,7 +16,7 @@ export default function Logsign(props) {
     props.onLogin(name, password);
   }
   return (
-    <div class="form-wrapper">
+    <div className="form-wrapper">
     {/* <form id="sign-up-form">
       <input type="text" placeholder="enter username"></input>
       <input type="password" placeholder="password"></input>

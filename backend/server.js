@@ -42,11 +42,13 @@ pool.connect((err, client, release) => {
 
 
 app.post('/login', (req, res) => { 
-  let name = req.body.name;
-  let password = req.body.password;
+  let name = req.body.user.name;
+  let password = req.body.user.password;
   pool.query('SELECT * FROM users;')
   .then((data) => {
-    console.log(data);
+    // console.log(name, data.rows);
+    const userID = getUserID(name, data.rows);
+    req.session.userID = userID;
   })
   .catch(err => console.log(err));
   });
