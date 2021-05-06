@@ -49,6 +49,7 @@ app.post('/login', (req, res) => {
     // console.log(name, data.rows);
     const userID = getUserID(name, data.rows);
     req.session.userID = userID;
+    console.log('cookie added?');
   })
   .catch(err => console.log(err));
   });
