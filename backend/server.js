@@ -1,13 +1,21 @@
 const express = require("express");
 const fileupload = require("express-fileupload");
 const cors = require("cors"); 
+const cookieSession = require('cookie-session');
 
 const app = express();
 
 app.use(cors());
 app.use(fileupload());
 app.use(express.static("files"));
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1']
+}));
 
+app.post('/login', (req, res) => {
+  
+})
 
 app.post('/upload', (req, res) => {
   console.log(req.files);
