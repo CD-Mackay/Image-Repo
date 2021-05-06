@@ -12,6 +12,8 @@ const { Pool } = require('pg');
 app.use(cors());
 app.use(fileupload());
 app.use(express.static("files"));
+app.use(express.urlencoded());  
+app.use(express.json());
 app.use(cookieSession({
   name: 'session',
   keys: ['key1']
@@ -39,10 +41,9 @@ pool.connect((err, client, release) => {
 });
 
 
-app.post('/login', (req, res) => {
+app.post('/login', (req, res) => { 
   let name = req.body.name;
   let password = req.body.password;
-  
   pool.query('SELECT * FROM users;')
   .then((data) => {
     console.log(data);

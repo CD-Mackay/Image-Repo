@@ -27,15 +27,19 @@ export default function useApplicationData() {
 
   }
 
-  const loginUser = (user) => {
+  const loginUser = (name, password) => {
+    const user = {
+      name: name,
+      password: password
+    };
 
-    return axios.post({
+    console.log(user);
+    
+    return axios({
       url: '/login',
       method: 'POST',
       data: { user }
-    })
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+    }).catch(err => console.log(err));
   };
 
 
