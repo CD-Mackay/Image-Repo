@@ -1,4 +1,3 @@
-INSERT INTO users (name, password) VALUES 
-(connor, password),
-(frank, password),
-(charlie, password);
+INSERT INTO users (name, password_digest) VALUES 
+('connor', 'password'),
+('frank', 'password');
