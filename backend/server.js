@@ -2,6 +2,7 @@ const express = require("express");
 const fileupload = require("express-fileupload");
 const cors = require("cors"); 
 const cookieSession = require('cookie-session');
+const { getUserID } = require('./helpers');
 
 const app = express();
 
@@ -14,7 +15,9 @@ app.use(cookieSession({
 }));
 
 app.post('/login', (req, res) => {
-  
+  let name = req.body.name;
+  let password = req.body.password;
+  const userID = getUserID(name, users)
 })
 
 app.post('/upload', (req, res) => {
