@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
+import { useHistory} from 'react-router-dom';
 
 export default function Logsign(props) {
-  // const [state, setState] = useState({
-  //   name: '',
-  //   password: ''
-  // });
   const [name, setName] = useState('');
   const [password, setPassword] = useState('')
 
+  const history = useHistory();
   const handleNameInput = event => setName(event.currentTarget.value);
   const handlePasswordInput = event => setPassword(event.currentTarget.value);
 
 
   const login = () => {
     props.onLogin(name, password);
+    history.push('/upload');
   }
   return (
     <div className="form-wrapper">
