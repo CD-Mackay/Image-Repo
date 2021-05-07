@@ -10,17 +10,15 @@ function App() {
   const { file, fileName, saveFile, uploadFile, loginUser } = useApplicationData();
 
   return (
-    <Router>
+    <Router>   
     <div className="App">
-      <Switch>
-        <Route path="/">
+    <Switch>
+        <Route exact path="/">
           <Logsign onLogin={loginUser} />
         </Route>
-        <Route path="/upload">
+        <Route exact path="/upload">
           <Uploader saveFile={saveFile} onUpload={uploadFile} />
-      {/* <input type="file" onChange={saveFile} />
-      <button onClick={uploadFile}>Upload</button> */}
-      </Route>
+        </Route>
       </Switch>
     </div>
     </Router>
