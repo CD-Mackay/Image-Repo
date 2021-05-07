@@ -14,6 +14,7 @@ app.use(fileupload());
 app.use(express.static("files"));
 app.use(express.urlencoded());  
 app.use(express.json());
+
 app.use(cookieSession({
   name: 'session',
   keys: ['key1']
@@ -50,6 +51,8 @@ app.post('/login', (req, res) => {
     const userID = getUserID(name, data.rows);
     req.session.userID = userID;
     console.log('cookie added?');
+    console.log(req.session);
+    res.redirect('/upload');
   })
   .catch(err => console.log(err));
   });
@@ -69,6 +72,10 @@ app.post('/upload', (req, res) => {
     //res.status(200).send({message: "Upload Succesful", code: 200});
     console.log('sweet success');
   });
+  console.log('adding to db');
+  pool.query('INSERT INTO images (name, user_id, file_path) VALUES ($1, $2, $3);', [fileName, Number(req.session.userID), filePath])
+  .then(res => console.log(res))
+  .catch(err => console.log(err));
 });
 
 app.listen(3000, () => {
