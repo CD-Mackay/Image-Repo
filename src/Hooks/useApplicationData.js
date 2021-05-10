@@ -7,8 +7,8 @@ export default function useApplicationData() {
 
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("");
-  const [loggedIn, setLoggedin] = useState(Cookies.get('session'));
-  const cookie = Cookies.get('userID');
+  const [display, setDisplay] = useState(null);
+
   const saveFile = (e) => {
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
@@ -38,11 +38,13 @@ export default function useApplicationData() {
 
     console.log(user);
     
-    return axios({
+    axios({
       url: '/login',
       method: 'POST',
       data: { user }
-    }).catch(err => console.log(err));
+    })
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
   };
 
 
@@ -51,8 +53,6 @@ export default function useApplicationData() {
     fileName,
     saveFile,
     uploadFile,
-    loginUser,
-    loggedIn,
-    cookie
+    loginUser
   }
 }
