@@ -2,12 +2,22 @@ import './App.css';
 import useApplicationData from './Hooks/useApplicationData';
 import Logsign from './Components/Logsign';
 import Uploader from './Components/Uploader';
+import LogOutButton from './Components/LogOutButton';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import { useState } from 'react';
+import LogoutButton from './Components/LogOutButton';
+
 
 
 function App() {
 
-  const { file, fileName, saveFile, uploadFile, loginUser, loggedIn, cookie } = useApplicationData();
+
+  const { file, fileName, saveFile, uploadFile, loginUser, } = useApplicationData();
+
+  const [loggedIn, setLoggedin] = useState(Cookies.get('session'));
+  const cookie = Cookies.get('session');
+  const loggedinCookie = Cookies.get('userID');
 
   return (
     <Router>   
@@ -17,7 +27,8 @@ function App() {
           <Logsign onLogin={loginUser} cookie={cookie} />
         </Route>
         <Route exact path="/upload">
-          <Uploader saveFile={saveFile} onUpload={uploadFile} cookie={cookie} />
+          <Uploader saveFile={saveFile} onUpload={uploadFile} altcookie={loggedinCookie} cookie={cookie} />
+          <LogoutButton  />
         </Route>
       </Switch>
     </div>

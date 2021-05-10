@@ -41,6 +41,13 @@ pool.connect((err, client, release) => {
   });
 });
 
+app.get('/', (req, res) => {
+  pool.query('SELECT * FROM images;')
+  .then((data) => {
+    res.json(data.rows);
+  })
+});
+
 
 app.post('/login', (req, res) => { 
   let name = req.body.user.name;
@@ -56,6 +63,11 @@ app.post('/login', (req, res) => {
   })
   .catch(err => console.log(err));
   });
+
+app.post('/logout', (req, res) => {
+  res.session.userID = null;
+  res.redirect('/');
+})
 
 app.post('/upload', (req, res) => {
   console.log(req.files);
