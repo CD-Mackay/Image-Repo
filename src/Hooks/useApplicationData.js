@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Cookies from 'js-cookie';
-
+import { useCookies } from 'react-cookie';
 
 export default function useApplicationData() {
 
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("");
   const [display, setDisplay] = useState(null);
+
+  const [cookies, setCookie, removeCookie] = useCookies(["userID"]);
+
+  function handleSetCookie(name) {
+    setCookie("user", name, { path: '/' });
+  };
+
+  function handleRemoveCookie() {
+    removeCookie("user");
+  }
+
 
   const saveFile = (e) => {
     setFile(e.target.files[0]);
@@ -43,15 +53,15 @@ export default function useApplicationData() {
       method: 'POST',
       data: { user }
     })
-    .then(data => console.log(data))
-    .catch(err => console.log(err));
+    .then(handleSetCookie(name))
+    .catch(err => console.log(err))
   };
 
   const logoutUser = () => {
     axios({
       url: '/logout',
       method: 'POST'
-    }).then(data => console.log(data))
+    }).then(handleRemoveCookie())
     .catch(err => console.log(err));
   };
 
