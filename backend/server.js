@@ -64,6 +64,11 @@ app.post('/login', (req, res) => {
   .catch(err => console.log(err));
   });
 
+app.post('/logout', (req, res) => {
+  res.session.userID = null;
+  res.redirect('/');
+})
+
 app.post('/upload', (req, res) => {
   console.log(req.files);
   console.log("uploading something!")
