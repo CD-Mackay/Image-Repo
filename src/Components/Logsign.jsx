@@ -12,6 +12,7 @@ export default function Logsign(props) {
 
   const login = () => {
     props.onLogin(name, password);
+    props.setCookie(name);
     history.push('/upload');
   }
   return (
