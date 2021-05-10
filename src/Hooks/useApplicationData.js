@@ -47,12 +47,21 @@ export default function useApplicationData() {
     .catch(err => console.log(err));
   };
 
+  const logoutUser = () => {
+    axios({
+      url: '/logout',
+      method: 'POST'
+    }).then(data => console.log(data))
+    .catch(err => console.log(err));
+  };
+
 
   return {
     file,
     fileName,
     saveFile,
     uploadFile,
-    loginUser
+    loginUser,
+    logoutUser
   }
 }
