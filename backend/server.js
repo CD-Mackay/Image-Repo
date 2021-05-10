@@ -41,6 +41,13 @@ pool.connect((err, client, release) => {
   });
 });
 
+app.get('/', (req, res) => {
+  pool.query('SELECT * FROM images;')
+  .then((data) => {
+    res.json(data.rows);
+  })
+});
+
 
 app.post('/login', (req, res) => { 
   let name = req.body.user.name;
