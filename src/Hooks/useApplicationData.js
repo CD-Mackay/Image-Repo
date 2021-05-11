@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 
@@ -6,10 +6,24 @@ export default function useApplicationData() {
 
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("");
-  const [display, setDisplay] = useState(null);
+  const [display, setDisplay] = useState();
 
   const [cookies, setCookie, removeCookie] = useCookies(["userID"]);
+  axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
+  useEffect(() => {
+    getAllImages();
+
+  }, []);
+
+  function getAllImages() {
+    axios({
+      url: '/images',
+      method: 'GET'
+    })
+    .then(data => setDisplay(data.data))
+    .catch(err => console.log(err))
+  }
   function handleSetCookie(name) {
     setCookie("user", name, { path: '/' });
   };
@@ -72,6 +86,7 @@ export default function useApplicationData() {
     saveFile,
     uploadFile,
     loginUser,
-    logoutUser
+    logoutUser,
+    display
   }
 }
