@@ -2,7 +2,6 @@ import './App.css';
 import useApplicationData from './Hooks/useApplicationData';
 import Logsign from './Components/Logsign';
 import Uploader from './Components/Uploader';
-import LogoutButton from './Components/LogOutButton';
 import ImageList from './Components/ImageList'
 import ProtectedRoutes from './Components/ProtectedRoutes';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -25,7 +24,7 @@ function App() {
         </Route>
         <Route exacth path="/upload">
           <Uploader save={saveFile} upload={uploadFile} />
-          <ImageList display={display} />
+          <ImageList display={display} cookie={cookies} />
         </Route>
           {/* <ProtectedRoutes exact path="/upload" cookies={cookies} component={Uploader} /> */}
       </Switch>
