@@ -8,7 +8,7 @@ export default function ProtectedRoutes({component: Component, ...rest}) {
 
   return (
     <Route {...rest} render={(props) => {
-      const token = cookies;
+     const token = cookies;
       if (token) {
         return <Component {...props} />;
       } else {

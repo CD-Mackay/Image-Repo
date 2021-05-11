@@ -5,12 +5,13 @@ import Uploader from './Components/Uploader';
 import LogoutButton from './Components/LogOutButton';
 import ProtectedRoutes from './Components/ProtectedRoutes';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { withCookies, Cookies } from 'react-cookie';
+import { withCookies, Cookies, useCookies } from 'react-cookie';
 
 function App() {
 
 
   const { saveFile, uploadFile, loginUser, } = useApplicationData();
+  const [cookies, setCookie, removeCookie] = useCookies(["userID"]);
 
 
 
@@ -21,11 +22,9 @@ function App() {
         <Route exact path="/">
           <Logsign onLogin={loginUser}  />
         </Route>
-        <Route exact path="/upload">
-          <Uploader saveFile={saveFile} onUpload={uploadFile} />
-          <ProtectedRoutes />
-          <LogoutButton  />
-        </Route>
+          <ProtectedRoutes exact path="/upload" cookies={cookies} component={Uploader} />
+          {/* <Uploader saveFile={saveFile} onUpload={uploadFile} /> */}
+         
       </Switch>
     </div>
     </Router>
