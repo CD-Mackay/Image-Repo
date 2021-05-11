@@ -13,7 +13,6 @@ export default function useApplicationData() {
 
   useEffect(() => {
     getAllImages();
-
   }, []);
 
   function getAllImages() {
