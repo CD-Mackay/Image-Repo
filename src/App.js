@@ -3,7 +3,9 @@ import useApplicationData from './Hooks/useApplicationData';
 import Logsign from './Components/Logsign';
 import Uploader from './Components/Uploader';
 import LogoutButton from './Components/LogOutButton';
+import ProtectedRoutes from './Components/ProtectedRoutes';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { withCookies, Cookies } from 'react-cookie';
 
 function App() {
 
@@ -21,6 +23,7 @@ function App() {
         </Route>
         <Route exact path="/upload">
           <Uploader saveFile={saveFile} onUpload={uploadFile} />
+          <ProtectedRoutes />
           <LogoutButton  />
         </Route>
       </Switch>
@@ -29,4 +32,4 @@ function App() {
   );
 }
 
-export default App;
+export default withCookies(App);
