@@ -4,7 +4,7 @@ export default function ImageListItem(props) {
   return (
     <div>
     <p>{props.name}</p>
-    <img src={props.file_path} />
+    <img src={props.file_path} alt={props.name} />
     </div>
   )
 }

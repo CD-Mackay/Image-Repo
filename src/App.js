@@ -11,7 +11,7 @@ import { withCookies, Cookies, useCookies } from 'react-cookie';
 function App() {
 
 
-  const { saveFile, uploadFile, loginUser, } = useApplicationData();
+  const { saveFile, uploadFile, loginUser, display } = useApplicationData();
   const [cookies, setCookie, removeCookie] = useCookies(["userID"]);
 
 
@@ -21,7 +21,7 @@ function App() {
     <div className="App">
     <Switch>
         <Route exact path="/">
-          <Logsign onLogin={loginUser}  />
+          <Logsign onLogin={loginUser} display={display} />
         </Route>
           <ProtectedRoutes exact path="/upload" cookies={cookies} component={Uploader} />
       </Switch>

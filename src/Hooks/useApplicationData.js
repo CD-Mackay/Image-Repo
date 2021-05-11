@@ -13,6 +13,7 @@ export default function useApplicationData() {
 
   useEffect(() => {
     getAllImages();
+    console.log(display);
   }, []);
 
   function getAllImages() {
@@ -23,6 +24,7 @@ export default function useApplicationData() {
     .then(data => setDisplay(data.data))
     .catch(err => console.log(err))
   }
+
   function handleSetCookie(name) {
     setCookie("user", name, { path: '/' });
   };
@@ -86,6 +88,7 @@ export default function useApplicationData() {
     uploadFile,
     loginUser,
     logoutUser,
-    display
+    display,
+    getAllImages
   }
 }
