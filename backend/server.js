@@ -41,7 +41,7 @@ pool.connect((err, client, release) => {
   });
 });
 
-app.get('/', (req, res) => {
+app.get('/images', (req, res) => {
   pool.query('SELECT * FROM images;')
   .then((data) => {
     res.json(data.rows);
