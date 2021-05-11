@@ -12,8 +12,7 @@ export default function useApplicationData() {
   axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
   useEffect(() => {
-    getAllImages();
-    console.log(display);
+    getAllImages()
   }, []);
 
   function getAllImages() {

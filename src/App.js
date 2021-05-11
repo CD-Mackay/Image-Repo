@@ -23,7 +23,11 @@ function App() {
         <Route exact path="/">
           <Logsign onLogin={loginUser} display={display} />
         </Route>
-          <ProtectedRoutes exact path="/upload" cookies={cookies} component={Uploader} />
+        <Route exacth path="/upload">
+          <Uploader save={saveFile} upload={uploadFile} />
+          <ImageList display={display} />
+        </Route>
+          {/* <ProtectedRoutes exact path="/upload" cookies={cookies} component={Uploader} /> */}
       </Switch>
     </div>
     </Router>
