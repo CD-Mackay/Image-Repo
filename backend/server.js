@@ -71,7 +71,8 @@ app.post('/logout', (req, res) => {
 
 app.post('/upload', (req, res) => {
   console.log(req.files);
-  console.log("uploading something!")
+  console.log("uploading something!");
+  console.log(__dirname);
   const filePath = __dirname + "/files/";
   const file = req.files.file;
   const fileName = file.name;

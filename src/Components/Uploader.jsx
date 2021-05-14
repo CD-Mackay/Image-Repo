@@ -4,8 +4,8 @@ import LogOutButton from './LogOutButton';
 export default function Uploader(props) {
   return (
     <div>
-      <input type="file" onChange={props.saveFile} />
-      <button onClick={props.onUpload}>Upload</button>
+      <input type="file" onChange={props.save} />
+      <button onClick={props.upload}>Upload</button>
       <LogOutButton />
     </div>
   )
