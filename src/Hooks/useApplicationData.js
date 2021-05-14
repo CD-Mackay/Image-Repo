@@ -34,6 +34,7 @@ export default function useApplicationData() {
 
 
   const saveFile = (e) => {
+    console.log('saving!')
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
   };
