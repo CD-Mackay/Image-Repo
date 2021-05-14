@@ -70,14 +70,12 @@ app.post('/logout', (req, res) => {
 })
 
 app.post('/upload', (req, res) => {
-  console.log(req.files);
-  console.log("uploading something!");
-  console.log(__dirname);
+  const directoryPath = __dirname.slice(0, __dirname.length - 7) + "src/Images/";
   const filePath = __dirname + "/files/";
   const file = req.files.file;
   const fileName = file.name;
 
-  file.mv(`${filePath}${fileName}`, (err) => {
+  file.mv(`${directoryPath}${fileName}`, (err) => {
     if (err) {
       //res.status(500).send({message: "File Upload has Failed", code: 200})
       console.log(err);
@@ -86,7 +84,7 @@ app.post('/upload', (req, res) => {
     console.log('sweet success');
   });
   console.log('adding to db');
-  pool.query('INSERT INTO images (name, user_id, file_path) VALUES ($1, $2, $3);', [fileName, Number(req.session.userID), filePath])
+  pool.query('INSERT INTO images (name, user_id, file_path) VALUES ($1, $2, $3);', [fileName, Number(req.session.userID), directoryPath])
   .then(res => console.log(res))
   .catch(err => console.log(err));
 });
