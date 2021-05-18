@@ -80,6 +80,36 @@ export default function useApplicationData() {
     .catch(err => console.log(err));
   };
 
+  function getDate(milliseconds) {
+    if (milliseconds) {
+    let current = Date.now();
+    // elapsed gives number of years since tweet was created.
+    let elapsed = ((current - milliseconds) / 1000) / 31536000;
+    // determine what unit of time to display
+    if (elapsed > 1) {
+      return Math.floor(elapsed) + " year ago";
+    }
+    elapsed = elapsed * 12;
+    if (elapsed > 1) {
+      return Math.floor(elapsed) + " months ago";
+    }
+    elapsed = elapsed * 30; 
+    if (elapsed > 1) {
+      return Math.floor(elapsed) + " days ago";
+    }
+    elapsed = elapsed * 24;
+    if (elapsed > 1) {
+      return Math.floor(elapsed) + " hours ago";
+    }
+    elapsed = elapsed * 60;
+    if (elapsed > 1) {
+      return Math.floor(elapsed) + " minutes ago";
+    }
+    elapsed = elapsed * 60;
+    return Math.floor(elapsed) + " seconds ago";
+  }
+  };
+
 
   return {
     file,
@@ -89,6 +119,7 @@ export default function useApplicationData() {
     loginUser,
     logoutUser,
     display,
-    getAllImages
+    getAllImages,
+    getDate
   }
 }

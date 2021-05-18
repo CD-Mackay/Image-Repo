@@ -4,6 +4,7 @@ import './imagestyles.css';
 
 export default function ImageListItem(props) {
 
+  const { getDate } = useApplicationData();
   const filePath = props.path;
   const truncatedPath = filePath.slice(filePath.length - 7, filePath.length);
   console.log(filePath.slice(filePath.length - 7, filePath.length));
