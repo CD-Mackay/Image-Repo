@@ -1,5 +1,6 @@
 import React from 'react';
 import useApplicationData from '../Hooks/useApplicationData';
+import './imagestyles.css';
 
 export default function ImageListItem(props) {
 
@@ -11,7 +12,7 @@ export default function ImageListItem(props) {
   return (
     <div>
     <p>{props.name}</p>
-    <img src={imageSource} alt={props.name} />
+    <img className="display-image" src={`../${props.name}`} alt={props.name} />
     </div>
   )
 };

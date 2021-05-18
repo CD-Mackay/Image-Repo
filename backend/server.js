@@ -70,7 +70,7 @@ app.post('/logout', (req, res) => {
 })
 
 app.post('/upload', (req, res) => {
-  const directoryPath = __dirname.slice(0, __dirname.length - 7) + "public";
+  const directoryPath = __dirname.slice(0, __dirname.length - 7) + "public/";
   const filePath = __dirname + "/files/";
   const file = req.files.file;
   const fileName = file.name;
