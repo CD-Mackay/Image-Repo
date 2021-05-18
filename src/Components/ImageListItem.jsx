@@ -14,6 +14,7 @@ export default function ImageListItem(props) {
     <div className="image-wrapper">
     <p>{props.name.slice(0, props.name.length -4)}</p>
     <p>Filetype: {props.name.slice(props.name.length -3, props.name.length)}</p>
+    <p>Uploaded: {getDate(props.date)}</p>
     <img className="display-image" src={`../${props.name}`} alt={props.name} />
     </div>
   )
