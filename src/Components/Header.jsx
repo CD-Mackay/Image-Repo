@@ -13,6 +13,11 @@ export default function Header() {
           <li>View and sort your saved images!</li>
         </ul>
       </div>
+      <div className="icon-wrap">
+        <ul>
+          <li></li>
+        </ul>
+      </div>
     </div>
   )
 }
