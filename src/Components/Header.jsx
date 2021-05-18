@@ -17,9 +17,9 @@ export default function Header() {
       <div className="icon-wrap">
         <ul>
           <li>
-          <FontAwesomeIcon icon={["fab", "github-alt"]} /> 
+          <a href="https://github.com/CD-Mackay" target="blank" ><FontAwesomeIcon icon={["fab", "github-alt"]} /></a> 
           <li>
-          <FontAwesomeIcon icon={["fab", "linkedin"]} />
+          <a href="https://www.linkedin.com/in/connor-mackay-800992bb/" target="blank" ><FontAwesomeIcon icon={["fab", "linkedin"]} /></a>
           </li> 
           </li>
         </ul>
