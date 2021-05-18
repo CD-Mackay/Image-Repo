@@ -11,7 +11,8 @@ export default function ImageListItem(props) {
   console.log(filePath);
   return (
     <div className="image-wrapper">
-    <p>{props.name}</p>
+    <p>{props.name.slice(0, props.name.length -4)}</p>
+    <p>Filetype: {props.name.slice(props.name.length -3, props.name.length)}</p>
     <img className="display-image" src={`../${props.name}`} alt={props.name} />
     </div>
   )

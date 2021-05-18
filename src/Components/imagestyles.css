@@ -5,9 +5,12 @@
 
 .image-list {
   border: 1px solid black;
+  display: flex;
+  flex-direction: column;
 }
 
 .image-wrapper {
   border: 1px solid black;
   max-width: 150px;
+  margin: 5px;
 }
