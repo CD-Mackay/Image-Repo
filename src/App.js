@@ -4,6 +4,7 @@ import Logsign from './Components/Logsign';
 import Uploader from './Components/Uploader';
 import ImageList from './Components/ImageList'
 import ProtectedRoutes from './Components/ProtectedRoutes';
+import Header from './Components/Header';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { withCookies, Cookies, useCookies } from 'react-cookie';
 
@@ -20,9 +21,11 @@ function App() {
     <div className="App">
     <Switch>
         <Route exact path="/">
+          <Header />
           <Logsign onLogin={loginUser} display={display} />
         </Route>
         <Route exacth path="/upload">
+          <Header />
           <Uploader save={saveFile} upload={uploadFile} />
           <ImageList display={display} cookie={cookies} />
         </Route>
