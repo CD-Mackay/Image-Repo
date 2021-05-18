@@ -84,7 +84,8 @@ app.post('/upload', (req, res) => {
     console.log('sweet success');
   });
   console.log('adding to db');
-  pool.query('INSERT INTO images (name, user_id, file_path) VALUES ($1, $2, $3);', [fileName, Number(req.session.userID), directoryPath])
+  const date = Date.now();
+  pool.query('INSERT INTO images (name, user_id, file_path, date_added) VALUES ($1, $2, $3, $4);', [fileName, Number(req.session.userID), directoryPath, date])
   .then(res => console.log(res))
   .catch(err => console.log(err));
 });
