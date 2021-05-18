@@ -1,5 +1,6 @@
 import React from 'react';
 import useApplicationData from '../Hooks/useApplicationData';
+import './buttonstyles.css';
 import { useHistory} from 'react-router-dom';
 
 
@@ -15,7 +16,7 @@ export default function LogoutButton() {
   }
   return (
     <div>
-      <button onClick={logOut}>Logout</button>
+      <button className="log-button" onClick={logOut}>Logout</button>
     </div>
   )
 }

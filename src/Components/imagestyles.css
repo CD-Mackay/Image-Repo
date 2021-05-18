@@ -5,4 +5,16 @@
 
 .image-list {
   border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 90vw;
+  margin: auto;
+}
+
+.image-wrapper {
+  border: 1px solid black;
+  max-width: 25%;
+  min-width: 20%;
+  margin: 5px;
 }

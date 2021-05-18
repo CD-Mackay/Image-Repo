@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory} from 'react-router-dom';
+import './buttonstyles.css';
+
 
 export default function Logsign(props) {
   const [name, setName] = useState('');
@@ -19,7 +21,7 @@ export default function Logsign(props) {
     <form id="log-in-form" onSubmit={event => event.preventDefault()}>
        <input type="text" placeholder="enter username" onChange={handleNameInput}></input>
       <input type="password" placeholder="password" onChange={handlePasswordInput}></input>
-      <button onClick={login}>Sign up!</button>
+      <button className="log-button" onClick={login}>Sign up!</button>
     </form>
     </div>
   )
