@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+li {
+  text-decoration: none;
+  list-style-type: none;
+}
