@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <div className="header">
       <div className="header-wrap">
-      <h1>Foto Album!</h1>
+      <h1>Welcome to Foto Album!</h1>
       </div>
       <div className="info-wrap">
         <ul>
