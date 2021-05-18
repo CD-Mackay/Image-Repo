@@ -1,5 +1,6 @@
 import React from 'react';
 import ImageListItem from './ImageListItem';
+import './imagestyles.css';
 export default function ImageList(props) {
 
 let displayImage = <p>No images</p>
@@ -11,7 +12,7 @@ if (props.display) {
   })
 }
   return (
-    <div>
+    <div className="image-list">
       { displayImage }
     </div>
   )
