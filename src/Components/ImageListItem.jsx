@@ -10,7 +10,7 @@ export default function ImageListItem(props) {
   const imageSource = "../" + truncatedPath + props.name;
   console.log(filePath);
   return (
-    <div>
+    <div className="image-wrapper">
     <p>{props.name}</p>
     <img className="display-image" src={`../${props.name}`} alt={props.name} />
     </div>
