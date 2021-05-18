@@ -7,7 +7,9 @@ import ProtectedRoutes from './Components/ProtectedRoutes';
 import Header from './Components/Header';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { withCookies, Cookies, useCookies } from 'react-cookie';
-
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab, faGithubAlt, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+library.add(fab, faGithubAlt, faLinkedinIn);
 function App() {
 
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './headerstyles.css';
 
 export default function Header() {
@@ -15,7 +16,12 @@ export default function Header() {
       </div>
       <div className="icon-wrap">
         <ul>
-          <li></li>
+          <li>
+          <FontAwesomeIcon icon={["fab", "github-alt"]} /> 
+          <li>
+          <FontAwesomeIcon icon={["fab", "linkedin"]} />
+          </li> 
+          </li>
         </ul>
       </div>
     </div>
