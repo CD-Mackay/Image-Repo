@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+}
+
+li {
+  text-decoration: none;
+  list-style-type: none;
+}

@@ -21,7 +21,7 @@ export default function Logsign(props) {
     <form id="log-in-form" onSubmit={event => event.preventDefault()}>
        <input type="text" placeholder="enter username" onChange={handleNameInput}></input>
       <input type="password" placeholder="password" onChange={handlePasswordInput}></input>
-      <button className="log-button" onClick={login}>Sign up!</button>
+      <button className="login-button" onClick={login}>Sign up!</button>
     </form>
     </div>
   )
