@@ -48,12 +48,13 @@ app.get('/images', (req, res) => {
   })
 });
 
-app.put('images/:id', (req, res) => {
+app.put('/images/:id', (req, res) => {
   const id = req.body.id;
-  pool.query('UPDATE images SET favourited as TRUE where id = $1', [id])
+  pool.query('UPDATE images SET favourite as TRUE where id = $1', [id])
   .then((data) => {console.log(data)})
   .catch(err => console.log(err));
 });
+
 
 
 app.post('/login', (req, res) => { 
