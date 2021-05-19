@@ -4,7 +4,7 @@ import './imagestyles.css';
 
 export default function ImageListItem(props) {
 
-  const { getDate, favouriteImage } = useApplicationData();
+  const { getDate, favouriteImage, deleteImage } = useApplicationData();
   const filePath = props.path;
   const truncatedPath = filePath.slice(filePath.length - 7, filePath.length);
   const imageSource = "../" + truncatedPath + props.name;
@@ -17,6 +17,7 @@ export default function ImageListItem(props) {
     <img className="display-image" src={`../${props.name}`} alt={props.name} />
     <button onClick={() => favouriteImage(props.id)}>Favourite</button>
     {props.favourite && <p>Favourited!!!</p>}
+    <button onClick={() => deleteImage(props.id)}>Delete</button>
     </div>
   )
 };

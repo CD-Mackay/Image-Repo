@@ -24,13 +24,22 @@ export default function useApplicationData() {
     .catch(err => console.log(err))
   }
 
+  function deleteImage(id) {
+    axios({
+      method: 'delete',
+      url: `/images/${id}`
+    })
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+  };
+
   function handleSetCookie(name) {
     setCookie("user", name, { path: '/' });
   };
 
   function handleRemoveCookie() {
     removeCookie("user");
-  }
+  };
 
   function favouriteImage(id) {
 
@@ -132,6 +141,7 @@ export default function useApplicationData() {
     display,
     getAllImages,
     getDate,
-    favouriteImage
+    favouriteImage,
+    deleteImage
   }
 }
