@@ -32,6 +32,15 @@ export default function useApplicationData() {
     removeCookie("user");
   }
 
+  function favouriteImage(id) {
+    axios({
+      url: `/images${id}`,
+      method: "PUT"
+    })
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+  };
+
 
   const saveFile = (e) => {
     console.log('saving!')
@@ -120,6 +129,7 @@ export default function useApplicationData() {
     logoutUser,
     display,
     getAllImages,
-    getDate
+    getDate,
+    favouriteImage
   }
 }

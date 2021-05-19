@@ -4,7 +4,7 @@ import './imagestyles.css';
 
 export default function ImageListItem(props) {
 
-  const { getDate } = useApplicationData();
+  const { getDate, favouriteImage } = useApplicationData();
   const filePath = props.path;
   const truncatedPath = filePath.slice(filePath.length - 7, filePath.length);
   console.log(filePath.slice(filePath.length - 7, filePath.length));
@@ -16,6 +16,7 @@ export default function ImageListItem(props) {
     <p>Filetype: {props.name.slice(props.name.length -3, props.name.length)}</p>
     <p>Uploaded: {getDate(props.date)}</p>
     <img className="display-image" src={`../${props.name}`} alt={props.name} />
+    <button onClick={favouriteImage(props.id)}>Favourite</button>
     </div>
   )
 };
