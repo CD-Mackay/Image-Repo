@@ -49,8 +49,9 @@ app.get('/images', (req, res) => {
 });
 
 app.put('/images/:id', (req, res) => {
-  const id = req.body.id;
-  pool.query('UPDATE images SET favourite = TRUE where id = $1', [id])
+  const id = req.body.faveStatus.id;
+  console.log(req.body);
+  pool.query('UPDATE images SET favourite = $1 where id = $2', [req.body.faveStatus.favourite, id])
   .then((data) => {console.log(data)})
   .catch(err => console.log(err));
 });

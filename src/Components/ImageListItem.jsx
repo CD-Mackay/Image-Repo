@@ -10,10 +10,14 @@ export default function ImageListItem(props) {
   const imageSource = "../" + truncatedPath + props.name;
 
   const makeFavourite = () => {
-    favouriteImage(props.id);
+    favouriteImage(props.id, true);
     setFave(true);
-  }
+  };
 
+  const unFavourite = () => {
+    favouriteImage(props.id, false);
+    setFave(false);
+  }
  const makeDelete = () => {
     deleteImage(props.id);
     getAllImages();
@@ -25,7 +29,8 @@ export default function ImageListItem(props) {
     <p>Filetype: {props.name.slice(props.name.length -3, props.name.length)}</p>
     <p>Uploaded: {getDate(props.date)}</p>
     <img className="display-image" src={`../${props.name}`} alt={props.name} />
-    <button onClick={makeFavourite}>Favourite</button>
+    {!fave &&<button onClick={makeFavourite}>Favourite</button>}
+    {fave && <button onClick={unFavourite}>unFavourite</button>}
     {fave && <p>Favourited!!!</p>}
     <button onClick={makeDelete}>Delete</button>
     </div>

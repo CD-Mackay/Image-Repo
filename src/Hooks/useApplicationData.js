@@ -42,12 +42,16 @@ export default function useApplicationData() {
     removeCookie("user");
   };
 
-  function favouriteImage(id) {
+  function favouriteImage(id, boo) {
+    const faveStatus = {
+      id: id,
+      favourite: boo
+    };
 
     axios({
       method: 'put',
       url: `/images/${id}`,
-      data: { id }
+      data: { faveStatus }
     })
     .then(getAllImages())
     .catch(err => console.log(err));
