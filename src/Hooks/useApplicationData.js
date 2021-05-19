@@ -34,7 +34,7 @@ export default function useApplicationData() {
 
   function favouriteImage(id) {
     axios({
-      url: `/images${id}`,
+      url: `/images/${id}`,
       method: "PUT"
     })
     .then(res => console.log(res))
