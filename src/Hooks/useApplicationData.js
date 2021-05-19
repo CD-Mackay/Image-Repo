@@ -104,9 +104,9 @@ export default function useApplicationData() {
   function getDate(milliseconds) {
     if (milliseconds) {
     let current = Date.now();
-    // elapsed gives number of years since tweet was created.
+    
     let elapsed = ((current - milliseconds) / 1000) / 31536000;
-    // determine what unit of time to display
+
     if (elapsed > 1) {
       return Math.floor(elapsed) + " year ago";
     }
