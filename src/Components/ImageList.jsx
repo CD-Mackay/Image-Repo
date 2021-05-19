@@ -5,7 +5,6 @@ export default function ImageList(props) {
   const [filter, setFilter] = useState(false);
 
 let displayImage = <p>No images</p>
-//    .filter (note => note.category == viewCategory || viewCategory == null )
 
 if (props.display) {
   displayImage = props.display

@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useApplicationData from '../Hooks/useApplicationData';
 import './imagestyles.css';
 
 export default function ImageListItem(props) {
-
-  const { getDate, favouriteImage, deleteImage } = useApplicationData();
+  const [fave, setFave] = useState(props.favourite);
+  const { getDate, favouriteImage, deleteImage, getAllImages } = useApplicationData();
   const filePath = props.path;
   const truncatedPath = filePath.slice(filePath.length - 7, filePath.length);
   const imageSource = "../" + truncatedPath + props.name;
+
+  const makeFavourite = () => {
+    favouriteImage(props.id);
+    setFave(true);
+  }
+
+ const makeDelete = () => {
+    deleteImage(props.id);
+    getAllImages();
+  }
   
   return (
     <div className="image-wrapper">
@@ -15,9 +25,9 @@ export default function ImageListItem(props) {
     <p>Filetype: {props.name.slice(props.name.length -3, props.name.length)}</p>
     <p>Uploaded: {getDate(props.date)}</p>
     <img className="display-image" src={`../${props.name}`} alt={props.name} />
-    <button onClick={() => favouriteImage(props.id)}>Favourite</button>
-    {props.favourite && <p>Favourited!!!</p>}
-    <button onClick={() => deleteImage(props.id)}>Delete</button>
+    <button onClick={makeFavourite}>Favourite</button>
+    {fave && <p>Favourited!!!</p>}
+    <button onClick={makeDelete}>Delete</button>
     </div>
   )
 };
