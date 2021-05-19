@@ -3,6 +3,12 @@
   max-height: 100px;
 }
 
+.fave-image {
+  border: 2px solid gold;
+  max-width: 100px;
+  max-height: 100px;
+}
+
 .image-list {
   border: 1px solid black;
   display: flex;
@@ -11,6 +17,7 @@
   max-width: 90vw;
   margin: auto;
 }
+
 
 .image-wrapper {
   display: flex;

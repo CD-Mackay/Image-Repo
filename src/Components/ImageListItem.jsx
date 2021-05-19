@@ -29,14 +29,13 @@ export default function ImageListItem(props) {
     <p>Filetype: {props.name.slice(props.name.length -3, props.name.length)}</p>
     <p>Uploaded: {getDate(props.date)}</p>
     <div className="control-wrapper">
-    <img className="display-image" src={`../${props.name}`} alt={props.name} />
+    <img className={fave ? "fave-image" : "display-image"} src={`../${props.name}`} alt={props.name} />
     <div className="button-wrapper">
-    {!fave &&<button onClick={makeFavourite}>Favourite</button>}
-    {fave && <button onClick={unFavourite}>unFavourite</button>}
+    {!fave &&<button className="favourite-button" onClick={makeFavourite}>Favourite</button>}
+    {fave && <button className="unfavourite-button" onClick={unFavourite}>unFavourite</button>}
     <button onClick={makeDelete}>Delete</button>
     </div>
     </div>
-    {fave && <p>Favourited!!!</p>}
     </div>
   )
 };
