@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ImageListItem from './ImageListItem';
 import './imagestyles.css';
 export default function ImageList(props) {
+  const [filter, setFilter] = useState(false);
 
 let displayImage = <p>No images</p>
+//    .filter (note => note.category == viewCategory || viewCategory == null )
 
 if (props.display) {
   displayImage = props.display
+  .filter(image => image.favourite === true || filter === false)
   .map(image => {
     return <ImageListItem id={image.id} 
                           key={image.id} 
@@ -18,6 +21,8 @@ if (props.display) {
 }
   return (
     <div className="image-list">
+      {!filter && <button onClick={() => setFilter(true)}>View Favourites</button>}
+      {filter && <button onClick={() => setFilter(false)}>View All</button>}
       { displayImage }
     </div>
   )
