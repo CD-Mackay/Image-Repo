@@ -13,8 +13,15 @@
 }
 
 .image-wrapper {
+  display: flex;
+  flex-direction: column;
   border: 1px solid black;
   max-width: 25%;
   min-width: 20%;
   margin: 5px;
+}
+
+.control-wrapper {
+  display: flex;
+  flex-direction: row;
 }
