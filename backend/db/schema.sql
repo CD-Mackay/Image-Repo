@@ -12,5 +12,6 @@ CREATE TABLE images (
   name VARCHAR(255) NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   file_path VARCHAR(255) NOT NULL,
-  date_added BIGINT
+  date_added BIGINT,
+  favourite BOOLEAN DEFAULT FALSE
 );
