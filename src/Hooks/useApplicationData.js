@@ -29,18 +29,10 @@ export default function useApplicationData() {
       method: 'delete',
       url: `/images/${id}`
     })
-    .then(res => console.log(res))
+    .then(getAllImages())
     .catch(err => console.log(err));
   };
 
-  // function deleteNote(id) {
-  //   axios({
-  //       method: 'delete',
-  //       url: `/notes/${id}`
-  //     })
-  //     .then(getAllNotes())
-  //     .catch(err => console.log(err));
-  //   };
 
   function handleSetCookie(name) {
     setCookie("user", name, { path: '/' });
