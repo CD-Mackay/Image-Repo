@@ -16,6 +16,7 @@ export default function ImageListItem(props) {
     <p>Uploaded: {getDate(props.date)}</p>
     <img className="display-image" src={`../${props.name}`} alt={props.name} />
     <button onClick={() => favouriteImage(props.id)}>Favourite</button>
+    {props.favourite && <p>Favourited!!!</p>}
     </div>
   )
 };

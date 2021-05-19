@@ -39,7 +39,7 @@ export default function useApplicationData() {
       url: `/images/${id}`,
       data: { id }
     })
-    .then(res => console.log(res))
+    .then(getAllImages())
     .catch(err => console.log(err));
   };
 
