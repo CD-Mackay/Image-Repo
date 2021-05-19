@@ -55,6 +55,12 @@ app.put('/images/:id', (req, res) => {
   .catch(err => console.log(err));
 });
 
+app.delete('/images/:id', (req, res) => {
+  const id = req.params.id;
+  pool.query('DELETE FROM images WHERE id = $1', [id])
+  .then(res => console.log(res))
+  .catch(err => console.log(err));
+});
 
 
 
