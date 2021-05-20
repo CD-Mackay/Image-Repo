@@ -20,8 +20,12 @@ export default function Logsign(props) {
   return (
     <div className="form-wrapper">
     <form id="log-in-form" onSubmit={event => event.preventDefault()}>
-      <input type="text" placeholder="enter username" onChange={handleNameInput}></input>
-      <input type="password" placeholder="password" onChange={handlePasswordInput}></input>
+      <div className="input-wrapper">
+        <input type="text" placeholder="enter username" onChange={handleNameInput}></input>
+      </div>
+      <div className="input-wrapper">
+        <input type="password" placeholder="password" onChange={handlePasswordInput}></input>
+      </div>
       <button className="login-button" onClick={login}>Sign up!</button>
     </form>
     </div>
