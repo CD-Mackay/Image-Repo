@@ -19,10 +19,13 @@ if (props.display) {
   })
 }
   return (
+    <div className="image-list-wrapper">
+    {!filter && <button onClick={() => setFilter(true)}>View Favourites</button>}
+    {filter && <button onClick={() => setFilter(false)}>View All</button>}
     <div className="image-list">
-      {!filter && <button onClick={() => setFilter(true)}>View Favourites</button>}
-      {filter && <button onClick={() => setFilter(false)}>View All</button>}
       { displayImage }
     </div>
+  </div>
+
   )
 }
