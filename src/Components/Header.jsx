@@ -6,12 +6,12 @@ import { useCookies } from 'react-cookie';
 
 export default function Header() {
 
-  const [cookies, setCookie, removeCookie] = useCookies();
+  const [cookies, setCookie] = useCookies();
 
   useEffect(() => {
     setCookie(['userID']);
   }, []);
-  
+
   return (
     <div className="header">
       <div className="header-wrap">

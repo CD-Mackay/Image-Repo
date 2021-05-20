@@ -3,8 +3,6 @@ import useApplicationData from './Hooks/useApplicationData';
 import Logsign from './Components/Logsign';
 import Uploader from './Components/Uploader';
 import ImageList from './Components/ImageList';
-import LogOutButton from './Components/LogOutButton';
-import ProtectedRoutes from './Components/ProtectedRoutes';
 import Header from './Components/Header';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { withCookies, Cookies, useCookies } from 'react-cookie';
@@ -15,7 +13,7 @@ function App() {
 
 
   const { saveFile, uploadFile, loginUser, display } = useApplicationData();
-  const [cookies, setCookie, removeCookie] = useCookies(["userID"]);
+  const [cookies] = useCookies(["userID"]);
 
 
 
