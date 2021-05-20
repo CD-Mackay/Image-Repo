@@ -161,6 +161,7 @@ export default function useApplicationData() {
     getAllImages,
     getDate,
     favouriteImage,
-    deleteImage
+    deleteImage,
+    signUp
   }
 }

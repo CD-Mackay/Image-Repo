@@ -48,6 +48,15 @@ app.get('/images', (req, res) => {
   })
 });
 
+app.get('/users', (req, res) => {
+  pool.query('SELECT * FROM users;')
+  .then((data) => {
+    res.json(data.rows);
+  })
+});
+
+
+
 app.put('/images/:id', (req, res) => {
   const id = req.body.faveStatus.id;
   console.log(req.body);
@@ -67,7 +76,7 @@ app.delete('/images/:id', (req, res) => {
 app.post('/signup', (req, res) => {
   let name = req.body.user.name;
   let password = req.body.user.password;
-  pool.query('INSERT INTO users (name, password) VALUES ($1, $2)', [name, password])
+  pool.query('INSERT INTO users (name, password_digest) VALUES ($1, $2)', [name, password])
   .then((data) => {
     console.log(data);
     res.redirect('/upload');

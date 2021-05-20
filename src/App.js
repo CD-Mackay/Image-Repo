@@ -12,7 +12,7 @@ library.add(fab, faGithubAlt, faLinkedinIn);
 function App() {
 
 
-  const { saveFile, uploadFile, loginUser, display } = useApplicationData();
+  const { saveFile, uploadFile, loginUser, display, signUp } = useApplicationData();
   const [cookies] = useCookies(["userID"]);
 
 
@@ -23,7 +23,7 @@ function App() {
     <Switch>
         <Route exact path="/">
           <Header cookies={cookies}/>
-          <Logsign onLogin={loginUser} display={display} />
+          <Logsign onLogin={loginUser} onSignUp={signUp} display={display} />
         </Route>
         <Route exacth path="/upload">
           <Header />
