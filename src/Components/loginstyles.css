@@ -1,0 +1,12 @@
+.form-wrapper {
+  max-width: 80vw;
+  margin: auto;
+}
+
+#log-in-form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: auto;
+}
+

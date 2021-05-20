@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './headerstyles.css';
+import LogoutButton from './LogOutButton';
+import { useCookies } from 'react-cookie';
 
 export default function Header() {
+
+  const [cookies, setCookie] = useCookies();
+
+  useEffect(() => {
+    setCookie(['userID']);
+  }, []);
+
   return (
     <div className="header">
       <div className="header-wrap">
@@ -21,7 +30,10 @@ export default function Header() {
           </li>
           <li>
           <a href="https://www.linkedin.com/in/connor-mackay-800992bb/" target="blank" ><FontAwesomeIcon icon={["fab", "linkedin"]} /></a>
-          </li> 
+          </li>
+          {cookies.user && <li>
+            <LogoutButton />
+          </li>}
         </ul>
       </div>
     </div>

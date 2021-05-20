@@ -2,8 +2,7 @@ import './App.css';
 import useApplicationData from './Hooks/useApplicationData';
 import Logsign from './Components/Logsign';
 import Uploader from './Components/Uploader';
-import ImageList from './Components/ImageList'
-import ProtectedRoutes from './Components/ProtectedRoutes';
+import ImageList from './Components/ImageList';
 import Header from './Components/Header';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { withCookies, Cookies, useCookies } from 'react-cookie';
@@ -14,7 +13,7 @@ function App() {
 
 
   const { saveFile, uploadFile, loginUser, display } = useApplicationData();
-  const [cookies, setCookie, removeCookie] = useCookies(["userID"]);
+  const [cookies] = useCookies(["userID"]);
 
 
 
@@ -23,13 +22,13 @@ function App() {
     <div className="App">
     <Switch>
         <Route exact path="/">
-          <Header />
+          <Header cookies={cookies}/>
           <Logsign onLogin={loginUser} display={display} />
         </Route>
         <Route exacth path="/upload">
           <Header />
-          <Uploader save={saveFile} upload={uploadFile} />
           <ImageList display={display} cookie={cookies} />
+          <Uploader save={saveFile} upload={uploadFile} />
         </Route>
           {/* <ProtectedRoutes exact path="/upload" cookies={cookies} component={Uploader} /> */}
       </Switch>
