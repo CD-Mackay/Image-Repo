@@ -64,7 +64,16 @@ app.delete('/images/:id', (req, res) => {
 });
 
 
-
+app.post('/signup', (req, res) => {
+  let name = req.body.user.name;
+  let password = req.body.user.password;
+  pool.query('INSERT INTO users (name, password) VALUES ($1, $2)', [name, password])
+  .then((data) => {
+    console.log(data);
+    res.redirect('/upload');
+  })
+  .catch(err => console.log(err));
+});
 
 app.post('/login', (req, res) => { 
   let name = req.body.user.name;

@@ -77,7 +77,21 @@ export default function useApplicationData() {
     } catch(exc) {
       console.log(exc);
     }
+  }
 
+  const signUp = (name, password) => {
+    const user = {
+      name: name,
+      password: password
+    };
+
+    axios({
+      url: '/signup',
+      method: 'POST',
+      data: { user }
+    })
+    .then(handleSetCookie(name))
+    .catch(err => console.log(err))
   }
 
   const loginUser = (name, password) => {
