@@ -1,17 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ImageListItem from './ImageListItem';
 import './imagestyles.css';
-import Helpers from '../Hooks/Helpers';
 import { useCookies } from 'react-cookie';
 
 export default function ImageList(props) {
   const [filter, setFilter] = useState(false);
   const [cookies, setCookie, getCookie] = useCookies();
-  const { getUserID } = Helpers();
 
-  useEffect(() => {
-    getCookie(['userID']);
-  }, []);
+
 
 
 let displayImage = <p>No images</p>

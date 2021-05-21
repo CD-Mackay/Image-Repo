@@ -7,7 +7,6 @@ export default function useApplicationData() {
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("");
   const [display, setDisplay] = useState();
-  const [users, setUsers] = useState();
 
   const [cookies, setCookie, removeCookie] = useCookies(["userID"]);
   axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
@@ -16,9 +15,6 @@ export default function useApplicationData() {
     getAllImages()
   }, []);
 
-  useEffect(() => {
-    getAllUsers()
-  }, []);
 
   function getAllImages() {
     axios({
@@ -29,14 +25,6 @@ export default function useApplicationData() {
     .catch(err => console.log(err))
   }
 
-  function getAllUsers() {
-    axios({
-      url: '/users',
-      method: 'GET'
-    })
-    .then(data => setUsers(data.data))
-    .catch(err => console.log(err))
-  }
 
   function deleteImage(id) {
     axios({
@@ -163,11 +151,6 @@ export default function useApplicationData() {
   }
   };
 
-  function getUserID(name, users) {
-    const currentUser = users.filter(user => user.name == name);
-
-    return currentUser.id;
-  }
 
 
 
@@ -185,7 +168,5 @@ export default function useApplicationData() {
     favouriteImage,
     deleteImage,
     signUp,
-    users,
-    getUserID
   }
 }
