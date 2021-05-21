@@ -6,7 +6,14 @@ export default function Helpers() {
     const displayImages = images.filter(image => image.user_id == currentUser.id);
     return displayImages;
   }
+
+  function getUserID(name, users) {
+    const currentUser = users.filter(user => user.name == name);
+
+    return currentUser.id;
+  }
   return {
-    getImagesByID
+    getImagesByID,
+    getUserID
   }
 }

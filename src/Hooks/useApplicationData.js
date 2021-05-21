@@ -164,6 +164,7 @@ export default function useApplicationData() {
   };
 
 
+
   return {
     file,
     fileName,
@@ -176,6 +177,7 @@ export default function useApplicationData() {
     getDate,
     favouriteImage,
     deleteImage,
-    signUp
+    signUp,
+    users
   }
 }
