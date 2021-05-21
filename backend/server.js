@@ -87,20 +87,18 @@ app.post('/signup', (req, res) => {
 app.post('/login', (req, res) => { 
   let name = req.body.user.name;
   let password = req.body.user.password;
-  pool.query('SELECT * FROM users;')
+  pool.query('SELECT * FROM users WHERE name = $1;', [name])
   .then((data) => {
-    // console.log(name, data.rows);
+    console.log(name, data.rows);
     const userID = getUserID(name, data.rows);
-    req.session.userID = userID;
-    console.log('cookie added?');
-    console.log(req.session);
+    req.session = { userID };
     res.redirect('/upload');
   })
   .catch(err => console.log(err));
   });
 
 app.post('/logout', (req, res) => {
-  res.session.userID = null;
+  res.session = null;
   res.redirect('/');
 })
 
