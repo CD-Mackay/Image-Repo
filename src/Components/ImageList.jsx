@@ -13,7 +13,6 @@ export default function ImageList(props) {
     getCookie(['userID']);
   }, []);
 
-  //console.log(getUserID(cookies.user, props.users));
 
 let displayImage = <p>No images</p>
 

@@ -121,7 +121,8 @@ export default function useApplicationData() {
       method: 'POST',
       data: { user }
     })
-    .then(handleSetCookie(name))
+    .then(getUserID(name, users))
+    .then((data) => handleSetCookie(name, data))
     .catch(err => console.log(err))
   };
 
@@ -163,6 +164,13 @@ export default function useApplicationData() {
   }
   };
 
+  function getUserID(name, users) {
+    const currentUser = users.filter(user => user.name == name);
+
+    return currentUser.id;
+  }
+
+
 
 
   return {
@@ -178,6 +186,7 @@ export default function useApplicationData() {
     favouriteImage,
     deleteImage,
     signUp,
-    users
+    users,
+    getUserID
   }
 }
