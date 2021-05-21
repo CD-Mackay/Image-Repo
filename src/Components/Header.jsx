@@ -6,10 +6,10 @@ import { useCookies } from 'react-cookie';
 
 export default function Header() {
 
-  const [cookies, setCookie] = useCookies();
+  const [cookies, setCookie, getCookie] = useCookies();
 
   useEffect(() => {
-    setCookie(['userID']);
+    getCookie(['userID']);
   }, []);
 
   return (

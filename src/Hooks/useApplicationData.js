@@ -15,6 +15,7 @@ export default function useApplicationData() {
     getAllImages()
   }, []);
 
+
   function getAllImages() {
     axios({
       url: '/images',
@@ -23,6 +24,7 @@ export default function useApplicationData() {
     .then(data => setDisplay(data.data))
     .catch(err => console.log(err))
   }
+
 
   function deleteImage(id) {
     axios({
@@ -150,6 +152,9 @@ export default function useApplicationData() {
   };
 
 
+
+
+
   return {
     file,
     fileName,
@@ -162,6 +167,6 @@ export default function useApplicationData() {
     getDate,
     favouriteImage,
     deleteImage,
-    signUp
+    signUp,
   }
 }

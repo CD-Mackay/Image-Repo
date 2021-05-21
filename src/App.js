@@ -12,7 +12,7 @@ library.add(fab, faGithubAlt, faLinkedinIn);
 function App() {
 
 
-  const { saveFile, uploadFile, loginUser, display, signUp } = useApplicationData();
+  const { saveFile, uploadFile, loginUser, display, signUp, users } = useApplicationData();
   const [cookies] = useCookies(["userID"]);
 
 
@@ -27,7 +27,7 @@ function App() {
         </Route>
         <Route exacth path="/upload">
           <Header />
-          <ImageList display={display} cookie={cookies} />
+          <ImageList display={display} users={users} cookie={cookies} />
           <Uploader save={saveFile} upload={uploadFile} />
         </Route>
           {/* <ProtectedRoutes exact path="/upload" cookies={cookies} component={Uploader} /> */}

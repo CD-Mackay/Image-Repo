@@ -42,7 +42,7 @@ pool.connect((err, client, release) => {
 });
 
 app.get('/images', (req, res) => {
-  pool.query('SELECT * FROM images;')
+  pool.query('SELECT * FROM images WHERE user_id = $1;', [req.session.userID])
   .then((data) => {
     res.json(data.rows);
   })
@@ -87,13 +87,11 @@ app.post('/signup', (req, res) => {
 app.post('/login', (req, res) => { 
   let name = req.body.user.name;
   let password = req.body.user.password;
-  pool.query('SELECT * FROM users;')
+  pool.query('SELECT * FROM users WHERE name = $1;', [name])
   .then((data) => {
-    // console.log(name, data.rows);
+    console.log(name, data.rows);
     const userID = getUserID(name, data.rows);
     req.session.userID = userID;
-    console.log('cookie added?');
-    console.log(req.session);
     res.redirect('/upload');
   })
   .catch(err => console.log(err));
