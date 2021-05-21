@@ -42,7 +42,7 @@ pool.connect((err, client, release) => {
 });
 
 app.get('/images', (req, res) => {
-  pool.query('SELECT * FROM images;')
+  pool.query('SELECT * FROM images WHERE user_id = $1;', [req.session.userID])
   .then((data) => {
     res.json(data.rows);
   })
@@ -91,14 +91,14 @@ app.post('/login', (req, res) => {
   .then((data) => {
     console.log(name, data.rows);
     const userID = getUserID(name, data.rows);
-    req.session = { userID };
+    req.session.userID = userID;
     res.redirect('/upload');
   })
   .catch(err => console.log(err));
   });
 
 app.post('/logout', (req, res) => {
-  res.session = null;
+  res.session.userID = null;
   res.redirect('/');
 })
 

@@ -121,8 +121,7 @@ export default function useApplicationData() {
       method: 'POST',
       data: { user }
     })
-    .then(getUserID(name, users))
-    .then((data) => handleSetCookie(name, data))
+    .then(handleSetCookie(name))
     .catch(err => console.log(err))
   };
 
