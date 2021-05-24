@@ -43,8 +43,8 @@
   .control-wrapper {
     display: flex;
     flex-direction: row;
+    margin: 0px 0px 0px 5px;
   }
-
   .image-list {
     border: 1px solid black;
     display: flex;
