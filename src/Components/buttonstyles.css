@@ -22,6 +22,18 @@
   background-color: green;
 }
 
+.switch-button {
+  color: gold;
+  background-color: white;
+  border: 2px solid gold;
+  border-radius: 5px;
+}
+
+.switch-button:hover {
+  background-color: gold;
+  color: white;
+}
+
 .upload-button {
   background-color: white;
   color: blue;

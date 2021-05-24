@@ -8,5 +8,13 @@
   flex-direction: column;
   width: 30%;
   margin: auto;
+  margin-bottom: 5px;
+}
+
+#sign-up-form {
+  margin-bottom: 5px;
+}
+.input-wrapper {
+  margin-bottom: 5px;
 }
 
