@@ -42,7 +42,7 @@ export default function Logsign(props) {
       </div>
       <button className="login-button" onClick={signup}>Sign up!</button>
     </form>}
-    <button onClick={newUser ? () => setNewUser(false) : () => setNewUser(true)}>{newUser ? "Click here to Login!" : "New Here? Sign up!"}</button>
+    <button className="switch-button" onClick={newUser ? () => setNewUser(false) : () => setNewUser(true)}>{newUser ? "Click here to Login!" : "New Here? Sign up!"}</button>
     </div>
   )
 }
