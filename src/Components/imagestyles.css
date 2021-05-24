@@ -1,3 +1,7 @@
+.control-wrapper {
+  width: 40%;
+  margin: auto;
+}
 .display-image {
   max-width: 100px;
   max-height: 100px;
@@ -12,30 +16,52 @@
 .image-list {
   border: 1px solid black;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  max-width: 90vw;
+  flex-direction: column;
+  width: 90vw;
   margin: auto;
-  height: 90vh;
 }
-
 
 .image-wrapper {
   display: flex;
   flex-direction: column;
   border: 1px solid black;
-  max-width: 30%;
-  min-width: 20%;
-  max-height: 50%;
-  margin: 5px;
+  margin: auto;
+  width: 80%;
 }
 
-.control-wrapper {
-  display: flex;
-  flex-direction: row;
-}
 
 .button-wrapper {
   display: flex;
   flex-direction: column;
+}
+
+
+@media screen and (min-width: 480px) {
+}
+
+@media screen and (min-width: 769px) {
+  .control-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin: 0px 0px 0px 5px;
+  }
+  .image-list {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 90vw;
+    margin: auto;
+    height: 90vh;
+  }
+
+  .image-wrapper {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    max-width: 30%;
+    min-width: 20%;
+    max-height: 50%;
+    margin: 5px;
+  }
 }

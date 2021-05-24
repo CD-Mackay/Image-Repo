@@ -6,7 +6,18 @@
   margin-bottom: 20px;
 }
 
+.info-wrap {
+  display: none;
+}
+
 li {
   text-decoration: none;
   list-style-type: none;
+}
+
+
+@media screen and (min-width: 480px) {
+  .info-wrap {
+    display: block;
+  }
 }
