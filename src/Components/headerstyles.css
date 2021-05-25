@@ -9,6 +9,10 @@
 .info-wrap {
   display: none;
 }
+.icon-wrap {
+  margin-right: 5px;
+  margin-top: 20px;
+}
 
 li {
   text-decoration: none;
@@ -19,5 +23,11 @@ li {
 @media screen and (min-width: 480px) {
   .info-wrap {
     display: block;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  icon-wrap {
+    margin-top: 0px;
   }
 }
