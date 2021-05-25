@@ -3,14 +3,31 @@
 }
 
 #log-in-form {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 #sign-up-form {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .input-wrapper {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+
+@media screen and (min-width: 576px ) {
+
+  #log-in-form {
+    margin-bottom: 5px;
+  }
+  
+  #sign-up-form {
+    margin-bottom: 5px;
+  }
+  
+  .input-wrapper {
+    margin-bottom: 5px;
+  }
+
 }
 
