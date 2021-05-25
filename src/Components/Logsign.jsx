@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory} from 'react-router-dom';
+import useApplicationData from '../Hooks/useApplicationData';
 import './buttonstyles.css';
 import './loginstyles.css';
 
@@ -7,7 +8,16 @@ import './loginstyles.css';
 export default function Logsign(props) {
   const [newUser, setNewUser] = useState(false);
   const [name, setName] = useState('');
-  const [password, setPassword] = useState('')
+  const [password, setPassword] = useState('');
+
+  const { users } = useApplicationData();
+
+  console.log(users);
+
+  const validate = (name, password, users) => {
+    const isValid = users.filter(user => (user.password_digest == password && user.name == name));
+    console.log(isValid);
+  }
 
   const history = useHistory();
   const handleNameInput = event => setName(event.currentTarget.value);
@@ -19,9 +29,11 @@ export default function Logsign(props) {
     history.push('/upload');
   }
   const login = () => {
+    validate(name, password, users);
     props.onLogin(name, password);
     history.push('/upload');
   }
+
   return (
     <div className="form-wrapper">
     {!newUser && <form id="log-in-form" onSubmit={event => event.preventDefault()}>
