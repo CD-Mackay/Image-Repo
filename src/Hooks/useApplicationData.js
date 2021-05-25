@@ -77,6 +77,13 @@ export default function useApplicationData() {
     setFileName(e.target.files[0].name);
   };
 
+  const getUserId = (name) => {
+  const userId = users.filter(user => user.name === name);
+  console.log(userId);
+  return userId.id;
+
+  }
+
   const uploadFile = async (event) => {
     const formData = new FormData();
     formData.append("file", file);
@@ -119,7 +126,7 @@ export default function useApplicationData() {
       method: 'POST',
       data: { user }
     })
-    .then(handleSetCookie(name))
+    .then(handleSetCookie(name, getUserId(name)))
     .catch(err => console.log(err))
   };
 
