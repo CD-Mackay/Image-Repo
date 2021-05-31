@@ -20,7 +20,6 @@ export default function ImageListItem(props) {
   }
  const makeDelete = () => {
     deleteImage(props.id);
-    getAllImages();
   }
   
   return (

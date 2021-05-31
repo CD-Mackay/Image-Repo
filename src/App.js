@@ -30,7 +30,6 @@ function App() {
           <ImageList display={display} users={users} cookie={cookies} />
           <Uploader save={saveFile} upload={uploadFile} />
         </Route>
-          {/* <ProtectedRoutes exact path="/upload" cookies={cookies} component={Uploader} /> */}
       </Switch>
     </div>
     </Router>

@@ -18,14 +18,14 @@ export default function useApplicationData() {
   }, []);
 
 
-  function getAllImages() {
-    axios({
-      url: '/images',
-      method: 'GET'
-    })
-    .then(data => setDisplay(data.data))
-    .catch(err => console.log(err))
-  }
+
+  const getAllImages = async () => {
+    axios.get('/images')
+      .then(res => {
+        const images = res.data;
+        setDisplay(images);
+      })
+  };
 
   function getAllUsers() {
     axios({
@@ -37,14 +37,21 @@ export default function useApplicationData() {
   }
 
 
-  function deleteImage(id) {
-    axios({
-      method: 'delete',
-      url: `/images/${id}`
-    })
-    .then(getAllImages())
-    .catch(err => console.log(err));
-  };
+  // function deleteImage(id) {
+  //   axios({
+  //     method: 'delete',
+  //     url: `/images/${id}`
+  //   })
+  //   .then(getAllImages())
+  //   .catch(err => console.log(err));
+  // };
+
+  const deleteImage = async (id) => {
+    axios.delete(`/images/${id}`)
+      .then(res => {
+        getAllImages();
+      })
+  }
 
 
   function handleSetCookie(name) {
