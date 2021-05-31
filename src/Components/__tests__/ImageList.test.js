@@ -11,5 +11,5 @@ describe("ImageList", () => {
   it("renders the sort by favourites button", () => {
     const { getByText } = render(<ImageList />);
     expect(getByText("View Favourites")).toBeInTheDocument;
-  })
-})
+  });
+});
