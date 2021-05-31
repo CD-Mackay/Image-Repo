@@ -12,7 +12,6 @@ export default function Logsign(props) {
 
   const { users } = useApplicationData();
 
-  console.log(users);
 
   const validate = (name, password, users) => {
     const isValid = users.filter(user => (user.password_digest == password && user.name == name));
