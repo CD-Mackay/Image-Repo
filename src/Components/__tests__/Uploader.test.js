@@ -13,5 +13,5 @@ describe("Uploader", () => {
     const { getByText } = render(<Uploader upload={upload} />);
     fireEvent.click(getByText("Upload"));
     expect(jest.fn).toHaveBeenCalled;
-  })
+  });
 });
