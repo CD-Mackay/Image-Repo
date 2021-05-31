@@ -7,4 +7,9 @@ describe("ImageList", () => {
     const { getByTestId } = render(<ImageList />);
     expect(getByTestId("image-list-wrapper")).toBeInTheDocument;
   });
+
+  it("renders the sort by favourites button", () => {
+    const { getByText } = render(<ImageList />);
+    expect(getByText("View Favourites")).toBeInTheDocument;
+  })
 })
