@@ -11,4 +11,6 @@ describe("Header", () => {
     const { getByText } = render(<Header />);
     expect(getByText("Welcome to Foto Album!")).toBeInTheDocument;
   });
+
+  
 })

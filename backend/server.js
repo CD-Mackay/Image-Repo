@@ -89,7 +89,6 @@ app.post('/login', (req, res) => {
   let password = req.body.user.password;
   pool.query('SELECT * FROM users WHERE name = $1;', [name])
   .then((data) => {
-    console.log(name, data.rows);
     const userID = getUserID(name, data.rows);
     req.session.userID = userID;
     res.redirect('/upload');
