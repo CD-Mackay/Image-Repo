@@ -12,4 +12,8 @@ describe("ImageList", () => {
     const { getByText } = render(<ImageList />);
     expect(getByText("View Favourites")).toBeInTheDocument;
   });
+
+  it("Renders the correct images and their names", () => {
+    const { getByText } = render(<ImageList />);
+  })
 });
