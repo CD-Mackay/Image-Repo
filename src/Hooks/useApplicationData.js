@@ -48,10 +48,10 @@ export default function useApplicationData() {
 
   const deleteImage = async (id) => {
     axios.delete(`/images/${id}`)
-      .then(res => {
+      .then(() => {
         getAllImages();
-      })
-  }
+      });
+  };
 
 
   function handleSetCookie(name) {

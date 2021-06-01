@@ -5,6 +5,7 @@ import Logsign from '../Logsign';
 describe("Logsign", () => {
   it("loads without crashing", () => {
     const { getByText } = render(<Logsign />);
+    expect(getByText("Login!")).toBeInTheDocument;
   });
 
   it("changes to signup when signup is clicked", () => {
