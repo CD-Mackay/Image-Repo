@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ImageListItem from './ImageListItem';
 import './imagestyles.scss';
+import './imageliststyles.scss';
 import { useCookies } from 'react-cookie';
 
 export default function ImageList(props) {
@@ -26,8 +27,8 @@ if (props.display) {
 }
   return (
     <div className="image-list-wrapper" data-testid="image-list-wrapper" >
-    {!filter && <button onClick={() => setFilter(true)}>View Favourites</button>}
-    {filter && <button onClick={() => setFilter(false)}>View All</button>}
+    {!filter && <button className="switch-button" onClick={() => setFilter(true)}>View Favourites</button>}
+    {filter && <button className="switch-button" onClick={() => setFilter(false)}>View All</button>}
     <div className="image-list">
       { displayImage }
     </div>
