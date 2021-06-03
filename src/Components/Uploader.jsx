@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import LogOutButton from './LogOutButton';
 import './buttonstyles.scss';
+import './uploader.scss';
 
 
 export default function Uploader(props) {
