@@ -60,3 +60,16 @@
   font-weight: 400;
 }
 
+.up-control-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: auto;
+}
+
+@media screen and (min-width: 769px) {
+  .up-control-wrap {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
