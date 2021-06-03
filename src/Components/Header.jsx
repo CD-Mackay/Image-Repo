@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './headerstyles.css';
+import './headerstyles.scss';
 import LogoutButton from './LogOutButton';
 import { useCookies } from 'react-cookie';
 

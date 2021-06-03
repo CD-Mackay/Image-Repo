@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory} from 'react-router-dom';
 import useApplicationData from '../Hooks/useApplicationData';
-import './buttonstyles.css';
+import './buttonstyles.scss';
 import './loginstyles.css';
 
 

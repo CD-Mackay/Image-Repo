@@ -1,6 +1,6 @@
 import React from 'react';
 import useApplicationData from '../Hooks/useApplicationData';
-import './buttonstyles.css';
+import './buttonstyles.scss';
 import { useHistory} from 'react-router-dom';
 
 
