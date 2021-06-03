@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory} from 'react-router-dom';
 import useApplicationData from '../Hooks/useApplicationData';
 import './buttonstyles.scss';
-import './loginstyles.css';
+import './loginstyles.scss';
 
 
 export default function Logsign(props) {
