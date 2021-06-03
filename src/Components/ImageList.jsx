@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ImageListItem from './ImageListItem';
-import './imagestyles.css';
+import './imagestyles.scss';
 import { useCookies } from 'react-cookie';
 
 export default function ImageList(props) {

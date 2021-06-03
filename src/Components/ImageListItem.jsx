@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useApplicationData from '../Hooks/useApplicationData';
-import './imagestyles.css';
+import './imagestyles.scss';
 
 export default function ImageListItem(props) {
   const [fave, setFave] = useState(props.favourite);

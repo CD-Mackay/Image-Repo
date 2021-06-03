@@ -1,55 +1,57 @@
+@import './variables.scss';
+
 .log-button {
-  color: red;
+  color: $dark-red;
   background-color: white;
-  border: 2px solid red;
+  border: 2px solid $dark-red;
   border-radius: 5px;
 }
 
 .log-button:hover {
-  background-color: red;
+  background-color: $dark-red;
   color: white;
 }
 
 .login-button {
-  color: green;
+  color: $dark-green;
   background-color: white;
-  border: 2px solid green;
+  border: 2px solid $dark-green;
   border-radius: 5px;
 }
 
 .login-button:hover {
   color: white;
-  background-color: green;
+  background-color: $dark-green;
 }
 
 
 
 .switch-button {
-  color: gold;
+  color: $gold;
   background-color: white;
-  border: 2px solid gold;
+  border: 2px solid $gold;
   border-radius: 5px;
 }
 
 .switch-button:hover {
-  background-color: gold;
+  background-color: $gold;
   color: white;
 }
 
 .upload-button {
   background-color: white;
-  color: blue;
-  border: 2px solid blue;
+  color: $dark-blue;
+  border: 2px solid $dark-blue;
   border-radius: 5px;
 }
 
 .upload-button:hover {
-  background-color: blue;
+  background-color: $dark-blue;
   color: white;
 }
 
 .favourite-button {
-  background-color: gold;
+  background-color: $gold;
   font-weight: 400;
 }
 
