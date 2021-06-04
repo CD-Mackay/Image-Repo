@@ -32,7 +32,7 @@ export default function ImageListItem(props) {
     <div className="button-wrapper">
     {!fave &&<button className="switch-button" onClick={makeFavourite}>Favourite</button>}
     {fave && <button className="unfavourite-button" onClick={unFavourite}>unFavourite</button>}
-    <button onClick={makeDelete}>Delete</button>
+    <button className="log-button" onClick={makeDelete}>Delete</button>
     </div>
     </div>
     </div>
