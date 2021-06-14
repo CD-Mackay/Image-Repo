@@ -1,5 +1,5 @@
 import './App.css';
-import useApplicationData from './Hooks/useApplicationData';
+import Helpers from './Hooks/useApplicationData';
 import Logsign from './Components/Logsign';
 import Uploader from './Components/Uploader';
 import ImageList from './Components/ImageList';
@@ -12,7 +12,6 @@ library.add(fab, faGithubAlt, faLinkedinIn);
 function App() {
 
 
-  const { saveFile, uploadFile, loginUser, display, signUp, users } = useApplicationData();
   const [cookies] = useCookies(["userID"]);
 
 

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 
-export default function useApplicationData() {
 
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("");
@@ -179,7 +178,7 @@ export default function useApplicationData() {
 
 
 
-  return {
+  export default {
     file,
     fileName,
     saveFile,
@@ -193,5 +192,4 @@ export default function useApplicationData() {
     deleteImage,
     signUp,
     users
-  }
-}
+  };
