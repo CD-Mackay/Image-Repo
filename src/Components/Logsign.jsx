@@ -1,35 +1,37 @@
 import React, { useState } from 'react';
 import { useHistory} from 'react-router-dom';
-import useApplicationData from '../Hooks/useApplicationData';
+import Helpers from '../Hooks/useApplicationData';
+import { withCookies, Cookies, useCookies } from 'react-cookie';
 import './buttonstyles.scss';
 import './loginstyles.scss';
 
 
-export default function Logsign(props) {
+export default function Logsign({users, display}) {
   const [newUser, setNewUser] = useState(false);
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
-
-  const { users } = useApplicationData();
+  const [cookies, setCookie, removeCookie] = useCookies(["userID"]);
 
 
   const validate = (name, password, users) => {
     const isValid = users.filter(user => (user.password_digest == password && user.name == name));
     console.log(isValid);
-  }
-
+  };
+  
   const history = useHistory();
   const handleNameInput = event => setName(event.currentTarget.value);
   const handlePasswordInput = event => setPassword(event.currentTarget.value);
 
 
   const signup = () => {
-    props.onSignUp(name, password);
+    Helpers.signUp(name, password);
+    setCookie("user", name, { path: '/' });
     history.push('/upload');
   }
   const login = () => {
     validate(name, password, users);
-    props.onLogin(name, password);
+    Helpers.loginUser(name, password);
+    setCookie("user", name, { path: '/' });
     history.push('/upload');
   }
 

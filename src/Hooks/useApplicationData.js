@@ -1,65 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 
-export default function useApplicationData() {
 
-  const [file, setFile] = useState();
-  const [fileName, setFileName] = useState("");
-  const [display, setDisplay] = useState();
-  const [users, setUsers] = useState();
 
-  const [cookies, setCookie, removeCookie] = useCookies(["userID"]);
   axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
-  useEffect(() => {
-    getAllImages();
-    getAllUsers();
-  }, []);
 
 
-
-  const getAllImages = async () => {
-    axios.get('/images')
-      .then(res => {
-        const images = res.data;
-        setDisplay(images);
-      })
+  async function getAllNotes() {
+    const { data: notes } = await axios.get('/notes');
+    return notes;
   };
 
-  function getAllUsers() {
-    axios({
-      url: '/users',
-      method: 'GET'
-    })
-    .then(data => setUsers(data.data))
-    .catch(err => console.log(err))
-  }
+  async function getAllImages() {
+    const { data: images } = await axios.get('/images');
+    return images;
+  };
 
-
-  // function deleteImage(id) {
-  //   axios({
-  //     method: 'delete',
-  //     url: `/images/${id}`
-  //   })
-  //   .then(getAllImages())
-  //   .catch(err => console.log(err));
-  // };
+  async function getAllUsers() {
+    const { data: users } = await axios.get('/users');
+    return users; 
+  };
 
   const deleteImage = async (id) => {
     axios.delete(`/images/${id}`)
       .then(() => {
         getAllImages();
       });
-  };
-
-
-  function handleSetCookie(name) {
-    setCookie("user", name, { path: '/' });
-  };
-
-  function handleRemoveCookie() {
-    removeCookie("user");
   };
 
   function favouriteImage(id, boo) {
@@ -77,21 +45,13 @@ export default function useApplicationData() {
     .catch(err => console.log(err));
   };
 
-
-  const saveFile = (e) => {
-    console.log('saving!')
-    setFile(e.target.files[0]);
-    setFileName(e.target.files[0].name);
-  };
-
-  const getUserId = (name) => {
+  const getUserId = (name, users) => {
   const userId = users.filter(user => user.name === name);
   console.log(userId);
   return userId.id;
+  };
 
-  }
-
-  const uploadFile = async (event) => {
+  const uploadFile = async (file, fileName) => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("fileName", fileName);
@@ -104,7 +64,7 @@ export default function useApplicationData() {
     } catch(exc) {
       console.log(exc);
     }
-  }
+  };
 
   const signUp = (name, password) => {
     const user = {
@@ -117,23 +77,20 @@ export default function useApplicationData() {
       method: 'POST',
       data: { user }
     })
-    .then(handleSetCookie(name))
+    .then(res => console.log(res))
     .catch(err => console.log(err))
-  }
+  };
 
   const loginUser = (name, password) => {
     const user = {
       name: name,
       password: password
     };
-
-    
     axios({
       url: '/login',
       method: 'POST',
       data: { user }
     })
-    .then(handleSetCookie(name, getUserId(name)))
     .catch(err => console.log(err))
   };
 
@@ -141,7 +98,7 @@ export default function useApplicationData() {
     axios({
       url: '/logout',
       method: 'POST'
-    }).then(handleRemoveCookie())
+    })
     .catch(err => console.log(err));
   };
 
@@ -179,19 +136,14 @@ export default function useApplicationData() {
 
 
 
-  return {
-    file,
-    fileName,
-    saveFile,
+  export default {
     uploadFile,
     loginUser,
     logoutUser,
-    display,
     getAllImages,
     getDate,
     favouriteImage,
     deleteImage,
     signUp,
-    users
-  }
-}
+    getAllUsers
+  };
