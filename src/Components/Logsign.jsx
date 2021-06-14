@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory} from 'react-router-dom';
 import Helpers from '../Hooks/useApplicationData';
+import { withCookies, Cookies, useCookies } from 'react-cookie';
 import './buttonstyles.scss';
 import './loginstyles.scss';
 
@@ -9,6 +10,7 @@ export default function Logsign({users, display}) {
   const [newUser, setNewUser] = useState(false);
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const [cookies, setCookie, removeCookie] = useCookies(["userID"]);
 
 
   const validate = (name, password, users) => {
@@ -23,11 +25,13 @@ export default function Logsign({users, display}) {
 
   const signup = () => {
     Helpers.signUp(name, password);
+    setCookie("user", name, { path: '/' });
     history.push('/upload');
   }
   const login = () => {
     validate(name, password, users);
     Helpers.loginUser(name, password);
+    setCookie("user", name, { path: '/' });
     history.push('/upload');
   }
 
