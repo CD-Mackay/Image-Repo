@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory} from 'react-router-dom';
-import useApplicationData from '../Hooks/useApplicationData';
+import Helpers from '../Hooks/useApplicationData';
 import './buttonstyles.scss';
 import './loginstyles.scss';
 
@@ -9,8 +9,6 @@ export default function Logsign(props) {
   const [newUser, setNewUser] = useState(false);
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
-
-  const { users } = useApplicationData();
 
 
   const validate = (name, password, users) => {
@@ -24,12 +22,12 @@ export default function Logsign(props) {
 
 
   const signup = () => {
-    props.onSignUp(name, password);
+    Helpers.signUp(name, password);
     history.push('/upload');
   }
   const login = () => {
-    validate(name, password, users);
-    props.onLogin(name, password);
+    validate(name, password, props.users);
+    Helpers.loginUser(name, password);
     history.push('/upload');
   }
 

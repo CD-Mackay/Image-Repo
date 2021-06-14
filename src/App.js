@@ -1,4 +1,5 @@
 import './App.css';
+import {React, useState, useEffect } from 'react';
 import Helpers from './Hooks/useApplicationData';
 import Logsign from './Components/Logsign';
 import Uploader from './Components/Uploader';
@@ -11,8 +12,31 @@ import { fab, faGithubAlt, faLinkedinIn } from '@fortawesome/free-brands-svg-ico
 library.add(fab, faGithubAlt, faLinkedinIn);
 function App() {
 
+  const [file, setFile] = useState();
+  const [fileName, setFileName] = useState("");
+  const [cookies, setCookie, removeCookie] = useCookies(["userID"]);
+  const [display, setDisplay] = useState();
+  const [users, setUsers] = useState();
 
-  const [cookies] = useCookies(["userID"]);
+  const saveFile = (e) => {
+    console.log('saving!')
+    setFile(e.target.files[0]);
+    setFileName(e.target.files[0].name);
+  };
+
+  function handleSetCookie(name) {
+    setCookie("user", name, { path: '/' });
+  };
+
+  function handleRemoveCookie() {
+    removeCookie("user");
+  };
+
+  useEffect(() => {
+    setDisplay(Helpers.getAllImages());
+    setUsers(Helpers.getAllUsers());
+  }, []);
+
 
 
 
@@ -22,12 +46,12 @@ function App() {
     <Switch>
         <Route exact path="/">
           <Header cookies={cookies}/>
-          <Logsign onLogin={loginUser} onSignUp={signUp} display={display} />
+          <Logsign users={users} display={display} />
         </Route>
         <Route exacth path="/upload">
           <Header />
           <ImageList display={display} users={users} cookie={cookies} />
-          <Uploader save={saveFile} upload={uploadFile} />
+          <Uploader save={saveFile} file={file} fileName={fileName} upload={Helpers.uploadFile} />
         </Route>
       </Switch>
     </div>
