@@ -32,11 +32,20 @@ function App() {
     removeCookie("user");
   };
 
-  useEffect(() => {
-    setDisplay(Helpers.getAllImages());
-    setUsers(Helpers.getAllUsers());
-  }, []);
+  const fetchAndSetImages = async () => {
+    const displayedImages = await Helpers.getAllImages();
+    setDisplay(displayedImages);
+  };
 
+  const fetchAndSetUsers = async () => {
+    const userList = await Helpers.getAllUsers();
+    setUsers(userList);
+  };
+
+  useEffect(() => {
+    fetchAndSetImages();
+    fetchAndSetUsers();
+  }, []);
 
 
 

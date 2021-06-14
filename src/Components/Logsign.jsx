@@ -5,7 +5,7 @@ import './buttonstyles.scss';
 import './loginstyles.scss';
 
 
-export default function Logsign(props) {
+export default function Logsign({users, display}) {
   const [newUser, setNewUser] = useState(false);
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -14,8 +14,8 @@ export default function Logsign(props) {
   const validate = (name, password, users) => {
     const isValid = users.filter(user => (user.password_digest == password && user.name == name));
     console.log(isValid);
-  }
-
+  };
+  
   const history = useHistory();
   const handleNameInput = event => setName(event.currentTarget.value);
   const handlePasswordInput = event => setPassword(event.currentTarget.value);
@@ -26,7 +26,7 @@ export default function Logsign(props) {
     history.push('/upload');
   }
   const login = () => {
-    validate(name, password, props.users);
+    validate(name, password, users);
     Helpers.loginUser(name, password);
     history.push('/upload');
   }

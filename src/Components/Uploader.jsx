@@ -16,7 +16,7 @@ export default function Uploader(props) {
       <div className="up-control-wrap">
       <button className="upload-button" onClick={() => fileInput.current.click()}>Choose File</button>
       <input type="file" ref={fileInput} onChange={props.save} style={{ display: 'none' }}/>
-      <button className="upload-button" onClick={Helpers.uploadFile}>Upload</button>
+      <button className="upload-button" onClick={() => Helpers.uploadFile(props.file, props.fileName)}>Upload</button>
       </div>
     </div>
   )

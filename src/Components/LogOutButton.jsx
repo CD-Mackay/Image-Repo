@@ -1,5 +1,5 @@
 import React from 'react';
-import useApplicationData from '../Hooks/useApplicationData';
+import Helpers from '../Hooks/useApplicationData';
 import './buttonstyles.scss';
 import { useHistory} from 'react-router-dom';
 
@@ -8,10 +8,9 @@ export default function LogoutButton() {
 
   const history = useHistory();
 
-  const { logoutUser } = useApplicationData();
 
   const logOut = () => {
-    logoutUser();
+    Helpers.logoutUser();
     history.push('/');
   }
   return (

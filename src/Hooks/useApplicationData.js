@@ -8,21 +8,19 @@ import { useCookies } from 'react-cookie';
 
 
 
-  const getAllImages = async () => {
-    axios.get('/images')
-      .then(res => {
-        const images = res.data;
-        return images;
-      })
+  async function getAllNotes() {
+    const { data: notes } = await axios.get('/notes');
+    return notes;
   };
 
-  function getAllUsers() {
-    axios({
-      url: '/users',
-      method: 'GET'
-    })
-    .then(data => {return data.data})
-    .catch(err => console.log(err))
+  async function getAllImages() {
+    const { data: images } = await axios.get('/images');
+    return images;
+  };
+
+  async function getAllUsers() {
+    const { data: users } = await axios.get('/users');
+    return users; 
   };
 
   const deleteImage = async (id) => {
@@ -53,7 +51,7 @@ import { useCookies } from 'react-cookie';
   return userId.id;
   };
 
-  const uploadFile = async (event) => {
+  const uploadFile = async (file, fileName) => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("fileName", fileName);
@@ -88,14 +86,11 @@ import { useCookies } from 'react-cookie';
       name: name,
       password: password
     };
-
-    
     axios({
       url: '/login',
       method: 'POST',
       data: { user }
     })
-    .then(res => console.log(res))
     .catch(err => console.log(err))
   };
 
@@ -103,7 +98,7 @@ import { useCookies } from 'react-cookie';
     axios({
       url: '/logout',
       method: 'POST'
-    }).then(res => console.log(res))
+    })
     .catch(err => console.log(err));
   };
 
@@ -150,4 +145,5 @@ import { useCookies } from 'react-cookie';
     favouriteImage,
     deleteImage,
     signUp,
+    getAllUsers
   };
