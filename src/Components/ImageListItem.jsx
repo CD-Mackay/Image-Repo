@@ -16,10 +16,7 @@ export default function ImageListItem(props) {
   const unFavourite = () => {
     Helpers.favouriteImage(props.id, false);
     setFave(false);
-  }
- const makeDelete = () => {
-    Helpers.deleteImage(props.id);
-  }
+  };
   
   return (
     <div className={fave ? "fav-img-wrap" : "image-wrapper"}>
@@ -31,7 +28,7 @@ export default function ImageListItem(props) {
     <div className="button-wrapper">
     {!fave &&<button className="switch-button" onClick={makeFavourite}>Favourite</button>}
     {fave && <button className="unfavourite-button" onClick={unFavourite}>unFavourite</button>}
-    <button className="log-button" onClick={makeDelete}>Delete</button>
+    <button className="log-button" onClick={() => Helpers.deleteImage(props.id)}>Delete</button>
     </div>
     </div>
     </div>

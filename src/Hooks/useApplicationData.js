@@ -7,12 +7,6 @@ import { useCookies } from 'react-cookie';
   axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 
-
-  async function getAllNotes() {
-    const { data: notes } = await axios.get('/notes');
-    return notes;
-  };
-
   async function getAllImages() {
     const { data: images } = await axios.get('/images');
     return images;
@@ -41,7 +35,7 @@ import { useCookies } from 'react-cookie';
       url: `/images/${id}`,
       data: { faveStatus }
     })
-    .then(getAllImages())
+    .then(res => console.log(res))
     .catch(err => console.log(err));
   };
 

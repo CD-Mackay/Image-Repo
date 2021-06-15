@@ -22,7 +22,8 @@ if (props.display) {
                           name={image.name} 
                           path={image.file_path} 
                           date={image.date_added} 
-                          favourite={image.favourite} />
+                          favourite={image.favourite}
+                         />
   })
 }
   return (
