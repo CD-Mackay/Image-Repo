@@ -23,15 +23,15 @@ export default function ImageListItem({id, key, name, path, date, favourite, fav
 
   
   return (
-    <div className={favourited ? "fav-img-wrap" : "image-wrapper"}>
+    <div className={favourite ? "fav-img-wrap" : "image-wrapper"}>
     <p>{name.slice(0, name.length -4)}</p>
     <p>Filetype: {name.slice(name.length -3, name.length)}</p>
     <p>Uploaded: {Helpers.getDate(date)}</p>
     <div className="control-wrapper">
     <img className="display-image" src={`../${name}`} alt={name} />
     <div className="button-wrapper">
-    {!favourited &&<button className="switch-button" onClick={makeFavourite}>Favourite</button>}
-    {favourited && <button className="unfavourite-button" onClick={unFavourite}>unFavourite</button>}
+    {!favourite &&<button className="switch-button" onClick={makeFavourite}>Favourite</button>}
+    {favourite && <button className="unfavourite-button" onClick={unFavourite}>unFavourite</button>}
     <button className="log-button" onClick={() => Helpers.deleteImage(id)}>Delete</button>
     </div>
     </div>
