@@ -15,7 +15,8 @@ export default function LogoutButton() {
     Helpers.logoutUser();
     removeCookie("user");
     history.push('/');
-  }
+  };
+  
   return (
     <div>
       <button className="log-button" onClick={logOut}>Logout</button>

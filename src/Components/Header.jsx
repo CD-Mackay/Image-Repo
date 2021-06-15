@@ -12,6 +12,8 @@ export default function Header() {
     getCookie(['userID']);
   }, []);
 
+  console.log(cookies);
+
   return (
     <div className="header">
       <div className="header-wrap">
@@ -21,6 +23,7 @@ export default function Header() {
         <ul>
           <li>Upload images!</li>
           <li>View and sort your saved images!</li>
+          <li>Welcome {cookies.user}!</li>
         </ul>
       </div>
       <div className="icon-wrap">

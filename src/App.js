@@ -54,7 +54,7 @@ function App() {
     <div className="App">
     <Switch>
         <Route exact path="/">
-          <Header cookies={cookies}/>
+          <Header cookies={cookies} />
           <Logsign users={users} display={display} />
         </Route>
         <Route exacth path="/upload">
