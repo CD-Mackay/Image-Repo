@@ -37,12 +37,15 @@ export default function Logsign({users, display}) {
     history.push('/upload');
     } else {
       setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 4000);
     }
   };
 
   return (
     <div className="form-wrapper">
-      {error && <p>Invalid username/password</p>}
+      {error && <p className="error-message">Invalid username/password</p>}
     {!newUser && <form id="log-in-form" onSubmit={event => event.preventDefault()}>
       <div className="input-wrapper">
         <input type="text" placeholder="enter username" onChange={handleNameInput}></input>
