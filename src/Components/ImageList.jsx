@@ -4,18 +4,18 @@ import './imagestyles.scss';
 import './imageliststyles.scss';
 import { useCookies } from 'react-cookie';
 
-export default function ImageList(props) {
+export default function ImageList({display, setDisplay, users, cookie, fetchAndSetImages}) {
   const [filter, setFilter] = useState(false);
   const [cookies, setCookie, getCookie] = useCookies();
-  const [favourited, setFavourited] = useState(null);
+  const [favourited, setFavourited] = useState();
 
 
 
 
 let displayImage = <p>No images</p>
 
-if (props.display) {
-  displayImage = props.display
+if (display) {
+  displayImage = display
   .filter(image => image.favourite === true || filter === false)
   .map(image => {
     return <ImageListItem id={image.id} 
@@ -26,6 +26,7 @@ if (props.display) {
                           favourite={image.favourite}
                           favourited={favourited}
                           setFavourited={setFavourited}
+                          fetchAndSetImages={fetchAndSetImages}
                          />
   })
 }
