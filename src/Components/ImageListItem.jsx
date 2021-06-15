@@ -1,37 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Helpers from '../Hooks/useApplicationData';
 import './imagestyles.scss';
 
-export default function ImageListItem(props) {
-  const [fave, setFave] = useState(props.favourite);
-  const filePath = props.path;
+export default function ImageListItem({id, key, name, path, date, favourite, favourited, setFavourited}) {
+  const filePath = path;
   const truncatedPath = filePath.slice(filePath.length - 7, filePath.length);
-  const imageSource = "../" + truncatedPath + props.name;
+  const imageSource = "../" + truncatedPath + name;
 
   const makeFavourite = () => {
-    Helpers.favouriteImage(props.id, true);
-    setFave(true);
+    Helpers.favouriteImage(id, true);
+    setFavourited(true);
   };
 
   const unFavourite = () => {
-    Helpers.favouriteImage(props.id, false);
-    setFave(false);
-  }
- const makeDelete = () => {
-    Helpers.deleteImage(props.id);
-  }
+    Helpers.favouriteImage(id, false);
+    setFavourited(false);
+  };
+
+  useEffect(() => {
+    setFavourited(favourite);
+  }, []);
+
   
   return (
-    <div className={fave ? "fav-img-wrap" : "image-wrapper"}>
-    <p>{props.name.slice(0, props.name.length -4)}</p>
-    <p>Filetype: {props.name.slice(props.name.length -3, props.name.length)}</p>
-    <p>Uploaded: {Helpers.getDate(props.date)}</p>
+    <div className={favourite ? "fav-img-wrap" : "image-wrapper"}>
+    <p>{name.slice(0, name.length -4)}</p>
+    <p>Filetype: {name.slice(name.length -3, name.length)}</p>
+    <p>Uploaded: {Helpers.getDate(date)}</p>
     <div className="control-wrapper">
-    <img className="display-image" src={`../${props.name}`} alt={props.name} />
+    <img className="display-image" src={`../${name}`} alt={name} />
     <div className="button-wrapper">
-    {!fave &&<button className="switch-button" onClick={makeFavourite}>Favourite</button>}
-    {fave && <button className="unfavourite-button" onClick={unFavourite}>unFavourite</button>}
-    <button className="log-button" onClick={makeDelete}>Delete</button>
+    {!favourite &&<button className="switch-button" onClick={makeFavourite}>Favourite</button>}
+    {favourite && <button className="unfavourite-button" onClick={unFavourite}>unFavourite</button>}
+    <button className="log-button" onClick={() => Helpers.deleteImage(id)}>Delete</button>
     </div>
     </div>
     </div>

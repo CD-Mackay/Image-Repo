@@ -59,8 +59,8 @@ function App() {
         </Route>
         <Route exacth path="/upload">
           <Header />
-          <ImageList display={display} users={users} cookie={cookies} />
-          <Uploader save={saveFile} file={file} fileName={fileName} upload={Helpers.uploadFile} />
+          <ImageList display={display} setDisplay={setDisplay} users={users} cookie={cookies} />
+          <Uploader save={saveFile} file={file} fileName={fileName} />
         </Route>
       </Switch>
     </div>
