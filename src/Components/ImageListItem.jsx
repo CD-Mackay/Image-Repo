@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Helpers from '../Hooks/useApplicationData';
 import './imagestyles.scss';
 
-export default function ImageListItem({id, key, name, path, date, favourite, favourited, setFavourited}) {
+export default function ImageListItem({id, key, name, path, date, favourite, favourited, setFavourited, fetchAndSetImages}) {
   const filePath = path;
   const truncatedPath = filePath.slice(filePath.length - 7, filePath.length);
   const imageSource = "../" + truncatedPath + name;
@@ -10,12 +10,19 @@ export default function ImageListItem({id, key, name, path, date, favourite, fav
   const makeFavourite = () => {
     Helpers.favouriteImage(id, true);
     setFavourited(true);
+    fetchAndSetImages();
   };
 
   const unFavourite = () => {
     Helpers.favouriteImage(id, false);
     setFavourited(false);
+    fetchAndSetImages();
   };
+
+  const deleteImage = () => {
+    Helpers.deleteImage(id);
+    fetchAndSetImages();
+  }
 
   useEffect(() => {
     setFavourited(favourite);
@@ -32,7 +39,7 @@ export default function ImageListItem({id, key, name, path, date, favourite, fav
     <div className="button-wrapper">
     {!favourite &&<button className="switch-button" onClick={makeFavourite}>Favourite</button>}
     {favourite && <button className="unfavourite-button" onClick={unFavourite}>unFavourite</button>}
-    <button className="log-button" onClick={() => Helpers.deleteImage(id)}>Delete</button>
+    <button className="log-button" onClick={deleteImage}>Delete</button>
     </div>
     </div>
     </div>
