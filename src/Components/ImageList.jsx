@@ -7,7 +7,7 @@ import { useCookies } from 'react-cookie';
 export default function ImageList(props) {
   const [filter, setFilter] = useState(false);
   const [cookies, setCookie, getCookie] = useCookies();
-  const [favourited, setFavourited] = useState();
+  const [favourited, setFavourited] = useState(null);
 
 
 
