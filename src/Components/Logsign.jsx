@@ -11,11 +11,12 @@ export default function Logsign({users, display}) {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [cookies, setCookie, removeCookie] = useCookies(["userID"]);
+  const [error, setError] = useState(false);
 
 
   const validate = (name, password, users) => {
     const isValid = users.filter(user => (user.password_digest == password && user.name == name));
-    console.log(isValid);
+    return isValid.length > 0;
   };
   
   const history = useHistory();
@@ -27,16 +28,21 @@ export default function Logsign({users, display}) {
     Helpers.signUp(name, password);
     setCookie("user", name, { path: '/' });
     history.push('/upload');
-  }
+  };
+
   const login = () => {
-    validate(name, password, users);
+    if (validate(name, password, users)) {
     Helpers.loginUser(name, password);
     setCookie("user", name, { path: '/' });
     history.push('/upload');
-  }
+    } else {
+      setError(true);
+    }
+  };
 
   return (
     <div className="form-wrapper">
+      {error && <p>Invalid username/password</p>}
     {!newUser && <form id="log-in-form" onSubmit={event => event.preventDefault()}>
       <div className="input-wrapper">
         <input type="text" placeholder="enter username" onChange={handleNameInput}></input>

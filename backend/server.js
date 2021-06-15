@@ -42,7 +42,8 @@ pool.connect((err, client, release) => {
 });
 
 app.get('/images', (req, res) => {
-  pool.query('SELECT * FROM images;')
+  console.log(req.session);
+  pool.query('SELECT * FROM images WHERE user_id = $1;', [req.session.userID])
   .then((data) => {
     res.json(data.rows);
   })
