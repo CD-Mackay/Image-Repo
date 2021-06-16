@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ImageListItem from './ImageListItem';
 import './imagestyles.scss';
 import './imageliststyles.scss';
 import { useCookies } from 'react-cookie';
+import Helpers from '../Hooks/useApplicationData';
 
-export default function ImageList({display, setDisplay, users, cookie, fetchAndSetImages}) {
+export default function ImageList({ users, cookie}) {
   const [filter, setFilter] = useState(false);
   const [cookies, setCookie, getCookie] = useCookies();
   const [favourited, setFavourited] = useState();
+  const [display, setDisplay] = useState();
 
 
+  const fetchAndSetImages = async () => {
+    const displayedImages = await Helpers.getAllImages();
+    setDisplay(displayedImages);
+  };
 
+  useEffect(() => {
+    fetchAndSetImages();
+  }, []);
 
 let displayImage = <p>No images</p>
 
