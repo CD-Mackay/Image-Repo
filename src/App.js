@@ -32,10 +32,10 @@ function App() {
     removeCookie("user");
   };
 
-  const fetchAndSetImages = async () => {
-    const displayedImages = await Helpers.getAllImages();
-    setDisplay(displayedImages);
-  };
+  // const fetchAndSetImages = async () => {
+  //   const displayedImages = await Helpers.getAllImages();
+  //   setDisplay(displayedImages);
+  // };
 
   const fetchAndSetUsers = async () => {
     const userList = await Helpers.getAllUsers();
@@ -43,7 +43,6 @@ function App() {
   };
 
   useEffect(() => {
-    fetchAndSetImages();
     fetchAndSetUsers();
   }, []);
 
@@ -59,7 +58,7 @@ function App() {
         </Route>
         <Route exacth path="/upload">
           <Header />
-          <ImageList display={display} fetchAndSetImages={fetchAndSetImages} setDisplay={setDisplay} users={users} cookie={cookies} />
+          <ImageList users={users} cookie={cookies} />
           <Uploader save={saveFile} file={file} fileName={fileName} />
         </Route>
       </Switch>
