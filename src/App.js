@@ -9,7 +9,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { withCookies, Cookies, useCookies } from 'react-cookie';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab, faGithubAlt, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-library.add(fab, faGithubAlt, faLinkedinIn);
+import { fas, faStar, faCoffee } from '@fortawesome/free-solid-svg-icons'
+library.add(fab, faGithubAlt, faLinkedinIn, faStar);
 function App() {
 
   const [file, setFile] = useState();

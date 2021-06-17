@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Helpers from '../Hooks/useApplicationData';
 import './imagestyles.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function ImageListItem({id, key, name, path, date, favourite, favourited, setFavourited, fetchAndSetImages}) {
   const filePath = path;
@@ -37,8 +38,16 @@ export default function ImageListItem({id, key, name, path, date, favourite, fav
     <div className="control-wrapper">
     <img className="display-image" src={`../${name}`} alt={name} />
     <div className="button-wrapper">
-    {!favourite &&<button className="switch-button" onClick={makeFavourite}>Favourite</button>}
-    {favourite && <button className="unfavourite-button" onClick={unFavourite}>unFavourite</button>}
+    {!favourite &&
+      <button className="switch-button" onClick={makeFavourite}>
+        Favourite?
+        <FontAwesomeIcon icon={["fas", "star"]} />
+      </button>}
+    {favourite && 
+      <button className="unfavourite-button" onClick={unFavourite}>
+        Favourited!
+        <FontAwesomeIcon icon={["fas", "star"]} />
+      </button>}
     <button className="log-button" onClick={deleteImage}>Delete</button>
     </div>
     </div>
