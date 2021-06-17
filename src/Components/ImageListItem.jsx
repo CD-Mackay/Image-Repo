@@ -32,12 +32,12 @@ export default function ImageListItem({id, key, name, path, date, favourite, fav
   
   return (
     <div className={favourite ? "fav-img-wrap" : "image-wrapper"}>
-    <p>{name.slice(0, name.length -4)}</p>
-    <p>Filetype: {name.slice(name.length -3, name.length)}</p>
-    <p>Uploaded: {Helpers.getDate(date)}</p>
+      <div className="polaroid">
+      <img className="display-image" src={`../${name}`} alt={name} />
+    <p className="caption">{name.slice(0, name.length -4)}</p>
+    </div>
     <div className="control-wrapper">
-    <img className="display-image" src={`../${name}`} alt={name} />
-    <div className="button-wrapper">
+      <div className="button-wrapper">
     {!favourite &&
       <button className="switch-button" onClick={makeFavourite}>
         Favourite?
@@ -49,6 +49,10 @@ export default function ImageListItem({id, key, name, path, date, favourite, fav
         <FontAwesomeIcon icon={["fas", "star"]} />
       </button>}
     <button className="log-button" onClick={deleteImage}>Delete</button>
+    </div>
+    <div className="text-wrapper">
+    <p>Filetype: {name.slice(name.length -3, name.length)}</p>
+    <p>Uploaded: {Helpers.getDate(date)}</p>
     </div>
     </div>
     </div>
