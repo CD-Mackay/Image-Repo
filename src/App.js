@@ -11,7 +11,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab, faGithubAlt, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { fas, faStar, faCoffee } from '@fortawesome/free-solid-svg-icons'
 library.add(fab, faGithubAlt, faLinkedinIn, faStar);
-function App() {
+function App() {  
 
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("");

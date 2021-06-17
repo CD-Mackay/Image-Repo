@@ -4,23 +4,23 @@
   justify-content: space-around;
   border-bottom: 1px solid black;
   margin-bottom: 20px;
-}
+};
 
 .info-wrap {
   display: none;
-}
+};
 
 
 li {
   text-decoration: none;
   list-style-type: none;
-}
+};
 
 @media screen and (min-width: 769px) {
   .icon-wrap {
     margin-top: 0px;
-  }
+  };
   .info-wrap {
     display: block;
-  }
-}
+  };
+};
