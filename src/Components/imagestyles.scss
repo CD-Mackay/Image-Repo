@@ -32,7 +32,8 @@
 .fav-img-wrap {
   display: flex;
   flex-direction: column;
-  border: 2px solid gold;
+  border: 10px solid gold;
+  border-radius: 5px;
   margin: auto;
   width: 80%;
 }
@@ -72,7 +73,7 @@
   .fav-img-wrap {
     display: flex;
     flex-direction: column;
-    border: 1px solid gold;
+    border: 10px solid gold;
     margin: 0;
     justify-self: center;
   }
