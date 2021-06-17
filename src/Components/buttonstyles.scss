@@ -52,29 +52,29 @@
 };
 
 .unfavourite-button {
-  color: pink;
+  color: white;
   font-weight: 400;
-  background-color: white;
-  border: 2px solid pink;
+  background-color: $gold;
+  border: 2px solid $gold;
   border-radius: 5px;
   margin-bottom: 10px;
 };
 
 .unfavourite-button:hover {
-  color: white;
-  background-color: pink;
-}
+  color: $gold;
+  background-color: white;
+};
 
 .up-control-wrap {
   display: flex;
   flex-direction: column;
   width: 80%;
   margin: auto;
-}
+};
 
 @media screen and (min-width: 769px) {
   .up-control-wrap {
     flex-direction: row;
     justify-content: center;
-  }
-}
+  };
+};

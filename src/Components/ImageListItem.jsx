@@ -40,10 +40,12 @@ export default function ImageListItem({id, key, name, path, date, favourite, fav
     <div className="button-wrapper">
     {!favourite &&
       <button className="switch-button" onClick={makeFavourite}>
+        Favourite?
         <FontAwesomeIcon icon={["fas", "star"]} />
       </button>}
     {favourite && 
       <button className="unfavourite-button" onClick={unFavourite}>
+        Favourited!
         <FontAwesomeIcon icon={["fas", "star"]} />
       </button>}
     <button className="log-button" onClick={deleteImage}>Delete</button>
