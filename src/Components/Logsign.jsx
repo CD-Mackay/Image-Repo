@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory} from 'react-router-dom';
 import Helpers from '../Hooks/useApplicationData';
-import { withCookies, Cookies, useCookies } from 'react-cookie';
+import { useCookies } from 'react-cookie';
 import './buttonstyles.scss';
 import './loginstyles.scss';
 
@@ -15,7 +15,7 @@ export default function Logsign({users, display}) {
 
 
   const validate = (name, password, users) => {
-    const isValid = users.filter(user => (user.password_digest == password && user.name == name));
+    const isValid = users.filter(user => (user.password_digest === password && user.name === name));
     return isValid.length > 0;
   };
   

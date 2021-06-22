@@ -7,7 +7,6 @@ import Helpers from '../Hooks/useApplicationData';
 
 export default function ImageList({ users, cookie}) {
   const [filter, setFilter] = useState(false);
-  const [cookies, setCookie, getCookie] = useCookies();
   const [favourited, setFavourited] = useState();
   const [display, setDisplay] = useState();
 

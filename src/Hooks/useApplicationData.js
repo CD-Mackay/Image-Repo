@@ -1,6 +1,5 @@
-import React from 'react';
 import axios from 'axios';
-import { useCookies } from 'react-cookie';
+
 
 
 
@@ -39,11 +38,6 @@ import { useCookies } from 'react-cookie';
     .catch(err => console.log(err));
   };
 
-  const getUserId = (name, users) => {
-  const userId = users.filter(user => user.name === name);
-  console.log(userId);
-  return userId.id;
-  };
 
   const uploadFile = async (file, fileName) => {
     const formData = new FormData();
