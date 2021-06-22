@@ -6,17 +6,17 @@ import Uploader from './Components/Uploader';
 import ImageList from './Components/ImageList';
 import Header from './Components/Header';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { withCookies, Cookies, useCookies } from 'react-cookie';
+import { withCookies, useCookies } from 'react-cookie';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab, faGithubAlt, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-import { fas, faStar, faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 library.add(fab, faGithubAlt, faLinkedinIn, faStar);
 function App() {  
 
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("");
   const [cookies, setCookie, removeCookie] = useCookies(["userID"]);
-  const [display, setDisplay] = useState();
+  const [display] = useState();
   const [users, setUsers] = useState();
 
   const saveFile = (e) => {
@@ -25,13 +25,6 @@ function App() {
     setFileName(e.target.files[0].name);
   };
 
-  function handleSetCookie(name) {
-    setCookie("user", name, { path: '/' });
-  };
-
-  function handleRemoveCookie() {
-    removeCookie("user");
-  };
 
   const fetchAndSetUsers = async () => {
     const userList = await Helpers.getAllUsers();
