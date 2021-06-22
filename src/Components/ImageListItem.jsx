@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import Helpers from '../Hooks/useApplicationData';
 import './imagestyles.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
