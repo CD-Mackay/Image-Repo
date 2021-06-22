@@ -1,5 +1,4 @@
-import React, { useRef, useState } from 'react';
-import LogOutButton from './LogOutButton';
+import React, { useRef } from 'react';
 import Helpers from '../Hooks/useApplicationData';
 import './buttonstyles.scss';
 import './uploader.scss';

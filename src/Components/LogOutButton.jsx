@@ -1,6 +1,6 @@
 import React from 'react';
 import Helpers from '../Hooks/useApplicationData';
-import { withCookies, Cookies, useCookies } from 'react-cookie';
+import { useCookies } from 'react-cookie';
 import './buttonstyles.scss';
 import { useHistory} from 'react-router-dom';
 
@@ -8,7 +8,7 @@ import { useHistory} from 'react-router-dom';
 export default function LogoutButton() {
 
   const history = useHistory();
-  const [cookies, setCookie, removeCookie] = useCookies(["userID"]);
+  const [removeCookie] = useCookies(["userID"]);
 
 
   const logOut = () => {
@@ -16,7 +16,7 @@ export default function LogoutButton() {
     removeCookie("user");
     history.push('/');
   };
-  
+  console.log("props")
   return (
     <div>
       <button className="log-button" onClick={logOut}>Logout</button>

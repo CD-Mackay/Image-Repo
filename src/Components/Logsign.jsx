@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory} from 'react-router-dom';
 import Helpers from '../Hooks/useApplicationData';
-import { withCookies, Cookies, useCookies } from 'react-cookie';
+import { useCookies } from 'react-cookie';
 import './buttonstyles.scss';
 import './loginstyles.scss';
 

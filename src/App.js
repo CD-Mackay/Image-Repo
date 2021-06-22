@@ -33,11 +33,6 @@ function App() {
     removeCookie("user");
   };
 
-  // const fetchAndSetImages = async () => {
-  //   const displayedImages = await Helpers.getAllImages();
-  //   setDisplay(displayedImages);
-  // };
-
   const fetchAndSetUsers = async () => {
     const userList = await Helpers.getAllUsers();
     setUsers(userList);
